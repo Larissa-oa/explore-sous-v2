@@ -1,0 +1,161 @@
+---
+description: Tailwind CSS 4.x + Explore SOUS Framer design tokens and UI behaviour
+globs: ["**/*.tsx", "**/*.ts", "**/*.css", "**/*.jsx"]
+alwaysApply: true
+---
+
+# Explore SOUS — styling
+
+Single source of tokens: **`src/app/globals.css`** (`@import "tailwindcss"`, `:root` variables, `@theme inline`, `@utility` typography). Framer reference: [explore-sous.framer.website](https://explore-sous.framer.website/) — design system routes under `/design-system/*` (e.g. [text-styles](https://explore-sous.framer.website/design-system/text-styles), [color-styles](https://explore-sous.framer.website/design-system/color-styles), [spacing](https://explore-sous.framer.website/design-system/spacing-system), [radius](https://explore-sous.framer.website/design-system/border-radius-system), [buttons](https://explore-sous.framer.website/design-system/buttons), [inputs](https://explore-sous.framer.website/design-system/input-fields), [modals](https://explore-sous.framer.website/design-system/modal-systen)).
+
+## 1. Tailwind 4 patterns
+
+- Prefer **utility classes**; avoid inline styles for color, spacing, radius, and typography.
+- Use **semantic theme utilities** first: `bg-background`, `text-foreground`, `bg-primary`, `text-muted-foreground`, `border-border`, etc.
+- Reach for **palette utilities** only when semantic tokens do not fit: `bg-ds-peach-600`, `text-ds-blue-900`, `bg-ds-clay-100`.
+- Merge conditional classes with **`cn()`** from **`@/lib/utils`**; forwarded components should accept **`className`** and merge last.
+
+```tsx
+import { cn } from "@/lib/utils";
+
+<div
+  className={cn(
+    "base-classes",
+    condition && "conditional-classes",
+    className,
+  )}
+/>;
+```
+
+- **Variants (optional):** for many visual states, use **`class-variance-authority`** (`cva`) + `cn`; add the dependency when the first variant-heavy primitive needs it.
+
+## 2. Colour system (Framer → CSS → Tailwind)
+
+Semantic mapping in `@theme inline` (use these first):
+
+| Role | Utilities |
+|------|-----------|
+| Page surface | `bg-background`, `text-foreground` |
+| Primary CTA / links accent | `bg-primary`, `text-primary-foreground`, hover `hover:bg-primary-hover` |
+| Secondary / supporting text | `text-muted-foreground`, surfaces `bg-muted` |
+| Cards | `bg-card`, `text-card-foreground` |
+| Borders / inputs outline | `border-border`, `border-input` |
+| Focus ring | `ring-ring` (pair with `focus-visible:ring-2`) |
+| Success / warning (badges, alerts) | `text-success`, `bg-success-muted`, `text-warning`, `bg-warning-muted` |
+| Destructive | `bg-destructive`, `text-destructive-foreground` |
+
+**Raw palette** (`bg-ds-*`, `text-ds-*`): `ds-blue-900`, `ds-peach-{50,100,600,800,900}`, `ds-green-{50,100,600,800,900}`, `ds-yellow-{50,100,600,800,900}`, `ds-clay-{50,100,200,600,800,900}`. **Alpha overlays:** use CSS vars in arbitrary values, e.g. `bg-[var(--ds-alpha-black-8)]`, until exposed as theme colors if needed.
+
+**Do not** paste one-off hex colours in JSX—add or reuse a token in `globals.css` first.
+
+Colour space is **hex from Framer** for fidelity; migrating key tokens to **OKLCH** later is fine if you keep the same names in `@theme`.
+
+## 3. Typography (Framer text styles)
+
+Framer names: **H1 Semibold** … **H6 Medium**. In code use **`@utility`** classes (rem-based, same proportions as Framer px):
+
+| Utility | Framer analogue |
+|---------|-----------------|
+| `type-h1-sb` | H1 Semibold |
+| `type-h2-sb` | H2 Semibold |
+| `type-h2-md` | H2 Medium |
+| `type-h3-sb` … `type-h6-md` | H3–H6 Semibold / Medium |
+
+Body copy: default document styles use **`font-sans`** (**Inter** via `next/font`, variable `--font-inter`). OpenType flags live in **`--inter-features`** in `globals.css` (Framer parity). Use **`font-mono`** (Geist Mono) only for code.
+
+## 4. Spacing (4px base)
+
+Framer spacing system: **base unit 4px**. Prefer Tailwind spacing scale **`p-*`, `m-*`, `gap-*`, `space-*`** so rhythm stays **4px multiples** (e.g. `gap-2` = 8px, `gap-4` = 16px at default `spacing` scale). Avoid arbitrary pixel gaps unless they match that grid.
+
+## 5. Border radius (Framer tokens)
+
+| Framer token | Utility | Typical usage |
+|--------------|---------|----------------|
+| radius-4 | `rounded-ds-4` | Tiny badges, micro UI |
+| radius-8 | `rounded-ds-8` | Cards, inputs, small controls |
+| radius-10 | `rounded-ds-10` | **Primary buttons** (default; rare elsewhere) |
+| radius-12 | `rounded-ds-12` | Dropdowns, tooltips, panels |
+| radius-16 | `rounded-ds-16` | Modals, bottom sheets |
+| radius-20 | `rounded-ds-20` | Feature cards, hero surfaces |
+| radius-full | `rounded-ds-full` | Pills, chips |
+
+## 6. Buttons (Framer system)
+
+Documented variants: **Primary**, **Secondary**, **Destructive**, **Ghost**, **Link**. Behaviour standards:
+
+- **Layout:** `inline-flex items-center justify-center gap-2 font-medium transition-colors` (adjust with design).
+- **Shape:** default to **`rounded-ds-10`** for primary button surfaces unless a spec says otherwise.
+- **States:** always **`hover:`**, **`focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`**, **`disabled:pointer-events-none disabled:opacity-50`**.
+- **Icons:** keep icon + label aligned; prefer `size-*` for square icons (e.g. `size-4`) and `gap-2`.
+
+## 7. Input fields (Framer system)
+
+States in Framer: **Default**, **Filled**, **Default • Mobile**, **Filled** (mobile). Pattern:
+
+- **Label** (visible, associated with control).
+- **Control:** full width, **`rounded-ds-8`**, border `border-input`, background distinct from page when “filled”.
+- **Description** line under control for helper copy.
+- **Placeholder:** `placeholder:text-muted-foreground`.
+- **Invalid:** `aria-invalid:border-destructive` or `aria-invalid:ring-destructive/30` when applicable.
+
+## 8. Modals (Framer system)
+
+Framer examples: section header vs open header, optional footer, primary action. Standards:
+
+- **Surface:** `rounded-ds-16`, `bg-card`, `text-card-foreground`, `border-border`, sensible **`p-6`** or token-based padding.
+- **Backdrop:** alpha black tokens, e.g. `bg-[var(--ds-alpha-black-50)]`.
+- **Focus:** trap focus and restore on close (library or manual); first focusable element receives focus on open.
+
+## 9. Cards, lists, tables
+
+- **Default card:** `bg-card text-card-foreground border border-border rounded-ds-8 shadow-sm` (tune shadow when design specifies).
+- **Large / marketing card:** prefer **`rounded-ds-20`**.
+- **Tables:** scroll container `overflow-x-auto`, header row visually distinct (`bg-muted` or `border-b`), maintain **row min-height** for tap targets on mobile.
+
+## 10. Shadows & elevation
+
+Until tokens are added to `globals.css`, use Tailwind **`shadow-sm` / `shadow-md`** sparingly for cards and hovers (`hover:shadow-md`). Prefer one elevation pattern per surface type.
+
+## 11. Interactive & motion
+
+- **Hover:** always define for clickable elements (`hover:bg-*`, `hover:text-*`, `hover:border-*`).
+- **Active (optional):** subtle `active:scale-[0.98]` for buttons only if product agrees.
+- **Transitions:** prefer narrow props, e.g. **`transition-[color,box-shadow,opacity]`**, over `transition-all` unless justified.
+
+## 12. Dark mode
+
+Today: **`prefers-color-scheme`** adjusts `:root` **background / foreground / card** in `globals.css`. If the product later ships **class-based** dark mode (e.g. `.dark` on `<html>`), add matching **`dark:`** utilities and optional `@custom-variant`—then test both schemes for every new surface.
+
+## 13. Responsive behaviour
+
+- **Mobile-first:** base styles for small viewports, then **`sm:`**, **`md:`**, **`lg:`**, **`xl:`** as needed.
+- Breakpoints follow **Tailwind defaults** unless overridden in config.
+- Prefer **container / flex / grid** utilities; use **`@container`** only when a component truly needs container queries.
+
+## 14. Data attributes & composition
+
+- Prefer **`data-slot="…"`** on reusable primitives (`button`, `card`, `input` root) for styling hooks: `[&_[data-slot=icon]]:size-4`.
+- Use **`data-state`** for open/closed, selected, etc., when using headless patterns.
+
+## 15. Accessibility
+
+- Visible **`:focus-visible`** styles on all interactive elements.
+- Pair **`aria-invalid`** with border/ring treatment on inputs.
+- Respect **colour contrast** against `background` / `card`; do not rely on colour alone for state.
+
+## 16. Anti-patterns
+
+- Random **`#RRGGBB`** in class strings → **theme / `ds-*` token**.
+- **`w-4 h-4`** pairs → prefer **`size-4`**.
+- **Missing** hover/focus/disabled on interactive UI.
+- **Typography** as ad-hoc `text-[56px]` everywhere → use **`type-h*-`** utilities.
+
+## 17. File layout (this repo)
+
+- **Global CSS & tokens:** `src/app/globals.css`
+- **`cn()`:** `src/lib/utils.ts`
+- **UI primitives / compounds:** `src/components/ui/` (and feature-specific pieces under `src/features/…`)
+
+## 18. When Framer changes
+
+Update **`src/app/globals.css`** and this rule in the **same PR** when the Framer design system pages change, so Cursor and the build stay aligned.

@@ -1,0 +1,165 @@
+---
+description: React 19 conventions and best practices
+globs: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"]
+alwaysApply: true
+---
+
+# React 19
+
+Applies alongside `docs/ENGINEERING.md` (this repo: **PascalCase** `.tsx` component filenames, **kebab-case** for non-component modules, **`features/`** layout).
+
+## TypeScript
+
+- TypeScript for components, hooks, and utilities.
+- **`interface`** for props and object-shaped models.
+- Typed state: **`useState<T>()`**; avoid **`any`** — use `unknown` + narrowing when needed.
+
+## Files and exports
+
+- Colocate by feature under **`src/features/<domain>/`** (see engineering doc).
+- **`.tsx`** for JSX; **`.ts`** for hooks and utils without JSX.
+- **Default export** for route `page.tsx` / `layout.tsx` and full-page modules when Next requires it; otherwise prefer **named exports** for reusable pieces so refactors and tree-shaking stay predictable. Hooks and utilities: **named exports**.
+
+## Naming
+
+- Components: **PascalCase** (`UserProfile`).
+- Hooks: **`use` + PascalCase** (`useUserData`).
+- Server Actions / mutation helpers: clear verbs (`updateUserProfile`).
+- **Filenames:** match `docs/ENGINEERING.md` — component files **PascalCase**; other TS modules **kebab-case**.
+
+## Imports
+
+- Group: **React** → **third-party** → **`@/…` local**.
+- Prefer **`@/`**; avoid relative imports deeper than **two** levels.
+
+## Purity
+
+- Same props/state → same JSX; **no side effects during render** (no subscriptions, timers, or uncached `fetch` in render).
+- **Do not mutate** props or state; treat updates as replacements.
+- For async data in Client Components, use a **stable** `Promise` with **`use`** (e.g. passed from a parent or cache), **Server Components** for initial load, or **`useEffect`** when the flow is genuinely client-only — not a fresh `Promise` constructed inline every render.
+
+```tsx
+// ❌ BAD: new Promise every render breaks `use`
+function Bad() {
+  const data = use(fetch("/api")); // unstable
+  return null;
+}
+
+// ✅ GOOD: stable promise from props/cache
+function Good({ userPromise }: { userPromise: Promise<User> }) {
+  const user = use(userPromise);
+  return <span>{user.name}</span>;
+}
+```
+
+## Rules of Hooks
+
+- Only call hooks at the **top level** of components or custom hooks — not inside loops, conditions, or nested callbacks.
+- **Exhaustive-deps:** keep `useEffect` / `useMemo` / `useCallback` dependency arrays honest (or eslint-disable with a comment only when justified).
+
+## Memoization and React Compiler
+
+- If **React Compiler** is enabled for this project, prefer **clear, small components** and let the compiler memoize; avoid **`useMemo` / `useCallback` / `memo`** unless **profiling** shows a hotspot.
+- If the compiler is **not** enabled, apply manual memoization sparingly and only where measured.
+
+## Components
+
+- **Function components only** — no class components.
+- **Composition** over inheritance; use **`children`** and small building blocks; compound components when they improve readability.
+- Prefer **small files** (roughly under **100 lines** of component logic) so boundaries stay testable.
+
+## Refs (React 19)
+
+- **`ref` as a normal prop** on function components is supported — avoid **`forwardRef`** for new code unless you must support older React types.
+- **Ref callbacks** may return a **cleanup** function (runs on unmount or before re-run).
+
+```tsx
+function Panel({ ref }: { ref?: React.Ref<HTMLDivElement | null> }) {
+  return <div ref={ref}>…</div>;
+}
+```
+
+## Document metadata (client trees)
+
+- You may render **`<title>`**, **`<meta>`**, **`<link>`** in component output where appropriate; React hoists them. Prefer **Next `metadata` / `generateMetadata`** for App Router pages when possible.
+
+## `useState`
+
+- Prefer **functional updates** when the next value depends on the previous: `setN((x) => x + 1)`.
+- **Lift state** only to the nearest shared parent.
+
+## `use` (React 19)
+
+- Read **Promises** and **Context** during render; the tree must be under **`<Suspense>`** for thrown promises.
+- Do not pass a **new** Promise each render (see purity example).
+
+## `useEffect`
+
+- Sync with external systems (subscriptions, DOM, timers); **return cleanup** when needed.
+- Do not use `useEffect` as the default data-loading strategy in App Router — prefer **Server Components** or **server-backed** patterns from `nextjs-app-router` rule.
+
+## `useDeferredValue`
+
+- Defer expensive child updates; React 19 supports an **`initialValue`** option for the first deferred render when applicable.
+
+## `useOptimistic`
+
+- Pair with **Server Actions** or other mutations for responsive UI; keep the reducer **pure**.
+
+## Context
+
+- React 19 allows rendering **`<MyContext value={v}>`** as a provider shorthand (same as **`MyContext.Provider`**). Keep context **narrow** (theme, small UI flags), not a full app data store.
+
+## Custom hooks
+
+- Prefix **`use`**; call other hooks only at top level; return stable object shapes when consumers depend on referential equality (especially without compiler).
+
+## Forms and Actions
+
+- Server mutations: **`"use server"`** actions (see Next rule). Client form state: **`useActionState`** from **`react`**.
+
+```tsx
+"use client";
+
+import { useActionState } from "react";
+
+export function Form({ action }: { action: (prev: State, formData: FormData) => Promise<State> }) {
+  const [state, formAction, pending] = useActionState(action, null);
+  return (
+    <form action={formAction}>
+      <button type="submit" disabled={pending}>
+        Save
+      </button>
+      {state?.error ? <p>{state.error}</p> : null}
+    </form>
+  );
+}
+```
+
+- **`useFormStatus`** for submit pending state inside **form descendants** — import from **`react-dom`**.
+
+```tsx
+"use client";
+
+import { useFormStatus } from "react-dom";
+
+export function SubmitButton({ label }: { label: string }) {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending}>
+      {label}
+    </button>
+  );
+}
+```
+
+## Concurrent usage
+
+- Wrap non-urgent state updates in **`startTransition`** to keep input responsive.
+- Use **`<Suspense>`** for async children, lazy chunks, and `use`-driven loading.
+
+## Anti-patterns
+
+**Avoid:** mutating props/state; conditional hooks; **`any`**; `useEffect` as default data layer in RSC apps; **`forwardRef`** in new code unless required; blanket **`memo` / `useCallback`** without evidence.
+
+**Prefer:** explicit types; pure render; Server Components + Actions where appropriate; **`use`** with stable promises; small components; compiler-aware memoization policy.

@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/*
+ * Explore SOUS — design tokens from Framer design system
+ * https://explore-sous.framer.website/design-system/*
+ */
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b0f2a;
+  --card: #ffffff;
+
+  /* Blue */
+  --ds-blue-900: #0b0f2a;
+
+  /* Peach */
+  --ds-peach-50: #fff5f4;
+  --ds-peach-100: #fff5f4;
+  --ds-peach-600: #f06055;
+  --ds-peach-800: #7a1f1b;
+  --ds-peach-900: #4a0e0c;
+
+  /* Green */
+  --ds-green-50: #dff5ea;
+  --ds-green-100: #bdeed7;
+  --ds-green-600: #049f58;
+  --ds-green-800: #063d27;
+  --ds-green-900: #042b1b;
+
+  /* Yellow */
+  --ds-yellow-50: #fff9e6;
+  --ds-yellow-100: #fbf1cc;
+  --ds-yellow-600: #f3d26a;
+  --ds-yellow-800: #9e861f;
+  --ds-yellow-900: #3f3306;
+
+  /* Clay */
+  --ds-clay-50: #f2f1ee;
+  --ds-clay-100: #ece9e5;
+  --ds-clay-200: #e3e0dd;
+  --ds-clay-600: #8f857c;
+  --ds-clay-800: #36322f;
+  --ds-clay-900: #24201d;
+
+  /* Alpha black (base rgb 10,10,10) */
+  --ds-alpha-black-0: rgb(10 10 10 / 0%);
+  --ds-alpha-black-4: rgb(10 10 10 / 4%);
+  --ds-alpha-black-6: rgb(10 10 10 / 6%);
+  --ds-alpha-black-8: rgb(10 10 10 / 8%);
+  --ds-alpha-black-10: rgb(10 10 10 / 10%);
+  --ds-alpha-black-50: rgb(10 10 10 / 50%);
+
+  /* Alpha white */
+  --ds-alpha-white-50: rgb(252 252 252 / 50%);
+
+  /* Border radius (Framer token → value) */
+  --ds-radius-4: 4px;
+  --ds-radius-8: 8px;
+  --ds-radius-10: 10px;
+  --ds-radius-12: 12px;
+  --ds-radius-16: 16px;
+  --ds-radius-20: 20px;
+  --ds-radius-full: 999px;
+
+  /* Inter — OpenType parity with Framer toggles (see explore-sous-styling.mdc).
+   * "Alternative a" in Framer may map to a different cv tag per Inter build — adjust if needed. */
+  --inter-features:
+    "ss01" 0, "ss02" 0, "ss03" 0, "ss04" 0, "ss05" 0, "ss06" 0, "ss07" 0, "ss08" 0, "cv01" 1,
+    "cv03" 1, "cv04" 1, "cv06" 1, "cv09" 1, "dlig" 0, "dnom" 0, "frac" 0, "numr" 0, "ordn" 0,
+    "pnum" 0, "zero" 0, "subs" 0, "sups" 0, "tnum" 0, "case" 0, "smcp" 0, "c2sc" 0, "calt" 1,
+    "kern" 1, "cpsp" 0, "sinf" 0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--ds-peach-600);
+  --color-primary-foreground: #ffffff;
+  --color-primary-hover: var(--ds-peach-800);
+
+  --color-muted: var(--ds-clay-100);
+  --color-muted-foreground: var(--ds-clay-600);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+
+  --color-border: var(--ds-clay-200);
+  --color-input: var(--ds-clay-200);
+  --color-ring: var(--ds-peach-600);
+
+  --color-success: var(--ds-green-600);
+  --color-success-muted: var(--ds-green-50);
+  --color-warning: var(--ds-yellow-600);
+  --color-warning-muted: var(--ds-yellow-50);
+  --color-destructive: var(--ds-peach-800);
+  --color-destructive-foreground: #ffffff;
+
+  --color-ds-blue-900: var(--ds-blue-900);
+  --color-ds-peach-50: var(--ds-peach-50);
+  --color-ds-peach-100: var(--ds-peach-100);
+  --color-ds-peach-600: var(--ds-peach-600);
+  --color-ds-peach-800: var(--ds-peach-800);
+  --color-ds-peach-900: var(--ds-peach-900);
+  --color-ds-green-50: var(--ds-green-50);
+  --color-ds-green-600: var(--ds-green-600);
+  --color-ds-green-800: var(--ds-green-800);
+  --color-ds-yellow-600: var(--ds-yellow-600);
+  --color-ds-clay-50: var(--ds-clay-50);
+  --color-ds-clay-100: var(--ds-clay-100);
+  --color-ds-clay-200: var(--ds-clay-200);
+  --color-ds-clay-600: var(--ds-clay-600);
+  --color-ds-clay-800: var(--ds-clay-800);
+  --color-ds-clay-900: var(--ds-clay-900);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-ds-4: var(--ds-radius-4);
+  --radius-ds-8: var(--ds-radius-8);
+  --radius-ds-10: var(--ds-radius-10);
+  --radius-ds-12: var(--ds-radius-12);
+  --radius-ds-16: var(--ds-radius-16);
+  --radius-ds-20: var(--ds-radius-20);
+  --radius-ds-full: var(--ds-radius-full);
+}
+
+/* Typography — Framer text styles (inlineTextStyle names in Framer docs) */
+@utility type-h1-sb {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+@utility type-h2-sb {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+@utility type-h2-md {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h3-sb {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h3-md {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h4-sb {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+}
+
+@utility type-h4-md {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h5-sb {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h5-md {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h6-sb {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@utility type-h6-md {
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --card: #141414;
+  }
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-feature-settings: var(--inter-features);
+  font-kerning: normal;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}

@@ -1,0 +1,19 @@
+{
+  "LocaleLayout": {
+    "title": "Explore Sous",
+    "description": "Explore Sous — frontend en talen."
+  },
+  "HomePage": {
+    "heading": "Begin met bewerken van het page-bestand.",
+    "introLead": "Zoek je een startpunt of meer uitleg? Ga naar",
+    "introBetween": "of het",
+    "introTail": "centrum.",
+    "templates": "Templates",
+    "learning": "Learning",
+    "deploy": "Nu publiceren",
+    "documentation": "Documentatie"
+  },
+  "NotFoundPage": {
+    "title": "Pagina niet gevonden"
+  }
+}

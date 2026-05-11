@@ -1,0 +1,130 @@
+---
+description: Next.js 16+ App Router conventions and best practices
+globs: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"]
+alwaysApply: true
+---
+
+# Next.js 16+ App Router
+
+This repo uses **`src/app`** (`@/*` → `./src/*`). Product layout also uses `src/components`, `src/features`, `src/lib`, `src/i18n`, `src/messages`, `src/types`, `src/config` — see `docs/ENGINEERING.md`.
+
+## TypeScript
+
+- TypeScript for all new code; keep **`strict`** in `tsconfig.json`.
+- Prefer **`interface`** for component props and plain object shapes.
+
+## App Router files
+
+- Routing and segment UI live under **`src/app`** only (not the Pages Router).
+- Per segment: `page.tsx`, `layout.tsx`; colocate `loading.tsx`, `error.tsx`, `not-found.tsx` when needed.
+- Route UI in **`.tsx`**; non-JSX modules in **`.ts`** (utilities, actions without JSX).
+
+## Naming
+
+- Route special files: `page`, `layout`, `loading`, `error`, `not-found`, `route` (handlers), `template` — exact names Next expects.
+- React components: **PascalCase** (`VendorCard`).
+- Server Actions: verb-led names (`updateUserProfile`), file often `actions.ts` next to route or under `lib/actions`.
+- Folders: **kebab-case**; dynamic segments **`[slug]`**, catch-all **`[...slug]`**, optional catch-all **`[[...slug]]`**.
+
+## Imports
+
+- Order: React / Next → third-party → `@/…` local.
+- Prefer **`@/…`** absolute imports; avoid deep `../../..` chains.
+
+## Dev tooling
+
+- **`next dev`** uses **Turbopack** by default in modern Next; use `next dev --webpack` only when debugging a Webpack-specific issue.
+
+## Server vs client components
+
+**Default: Server Components** — no `"use client"`. Can `async`/`await` data in the component. No browser APIs or client-only hooks.
+
+**Client Components** — add **`"use client"`** at the top of the file. Use for interactivity, local state, effects, browser APIs. Keep these modules small; push data loading to the server when possible.
+
+```tsx
+// Server Component (default)
+export default async function Page() {
+  const res = await fetch("https://example.com/api", { next: { revalidate: 60 } });
+  const data = await res.json();
+  return <div>{data.title}</div>;
+}
+```
+
+```tsx
+"use client";
+
+import { useState } from "react";
+
+export function Counter() {
+  const [n, setN] = useState(0);
+  return <button type="button" onClick={() => setN((x) => x + 1)}>{n}</button>;
+}
+```
+
+## Data fetching
+
+**Server Components**
+
+- Prefer **`async` Server Components** or small async child components wrapped in **`<Suspense>`** with a `fallback`.
+- Use native **`fetch`** (with `next: { revalidate }`, `cache: 'no-store'`, etc.) or call **`@/lib/data/*`** helpers this project adds for SOUS.
+- Avoid **`useEffect`** solely to load data on the server.
+
+**Client Components**
+
+- Use **`useEffect`** + `fetch`, **SWR**, or **TanStack Query** when the data must live in the browser; pass initial data from the server when possible to reduce waterfalls.
+- When this repo introduces shared client fetch helpers (e.g. under `@/lib/api`), use them for consistent base URL, auth, and errors — do not invent import paths that do not exist yet.
+
+## Server Actions
+
+- Mark files or individual async functions with **`"use server"`** for mutations.
+- After successful mutations, invalidate with **`revalidatePath`** / **`revalidateTag`** from `next/cache` as appropriate.
+
+## Routing
+
+- **`page.tsx`** — segment UI; **`layout.tsx`** — shared chrome for children.
+- **`loading.tsx`** — instant fallback while streaming; **`error.tsx`** — must be a Client Component boundary in the App Router.
+- **`route.ts`** — Route Handlers (HTTP APIs).
+- **Route groups** `(name)` — organise files without changing the URL.
+- **Dynamic routes** — `[id]`, `[...slug]`, `[[...slug]]`; use **`generateStaticParams`** when you can prebuild paths.
+
+## Params and searchParams
+
+- Treat **`params`** and **`searchParams`** as **Promises** in route APIs when using current Next types: **`await params`**, **`await searchParams`** in async server pages/layouts.
+
+## Metadata
+
+- Export a static **`metadata`** object where possible.
+- Use async **`generateMetadata`** for data-driven titles/descriptions.
+
+## Navigation
+
+- Prefer **`<Link prefetch={...}>`** from `next/link` for in-app navigation.
+- Imperative navigation: **`useRouter`** from `next/navigation` (not `next/router`).
+
+## Caching (high level)
+
+- **`fetch`** in Server Components is integrated with Next data cache; control with `cache` and `next.revalidate`.
+- Use **`revalidateTag`** / **`revalidatePath`** after mutations that should refresh cached views.
+- Prefer explicit cache behaviour over accidental dynamic everything.
+
+## Middleware / proxy
+
+- Use **root `middleware.ts`** (or the **proxy** convention your Next version documents) for locale redirects, auth gating, or headers — keep the file focused and fast.
+
+## Images
+
+- Prefer **`next/image`** with **`width`/`height`** or **`fill`**; configure **`remotePatterns`** in `next.config` for remote assets.
+
+## Anti-patterns
+
+- Do not use **`useEffect`** for initial server-driven data in a Server Component tree; fetch on the server.
+- Do not use **`window`**, **`document`**, or **`localStorage`** in Server Components.
+- Do not add **`"use client"`** to large pages “just in case”; split interactive leaves.
+- Do not import **`next/router`** in the App Router.
+
+## Best practices (short)
+
+1. Default to **Server Components** and colocate **Suspense** for async UI.
+2. Use **Server Actions** (or Route Handlers) for mutations; then **revalidate**.
+3. Keep **client bundles small**; load data on the server when feasible.
+4. Follow **file-based routing** names exactly so builds stay predictable.

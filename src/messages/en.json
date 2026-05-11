@@ -1,0 +1,19 @@
+{
+  "LocaleLayout": {
+    "title": "Explore Sous",
+    "description": "Explore Sous — frontend and locales."
+  },
+  "HomePage": {
+    "heading": "To get started, edit the page file.",
+    "introLead": "Looking for a starting point or more instructions? Head over to",
+    "introBetween": "or the",
+    "introTail": "center.",
+    "templates": "Templates",
+    "learning": "Learning",
+    "deploy": "Deploy Now",
+    "documentation": "Documentation"
+  },
+  "NotFoundPage": {
+    "title": "Page not found"
+  }
+}
