@@ -2,7 +2,7 @@ import { isoDateMatchesWeekdays } from "@/lib/dates";
 import type { DiscoverySearchState } from "@/lib/discovery/discovery-query";
 import { asSearchCategoryId } from "@/lib/discovery/discovery-query";
 import { vendorMatchesTextQuery } from "@/lib/search/vendor-text-match";
-import type { CatalogProduct, CatalogVendor } from "@/types/catalog";
+import type { CatalogProduct, CatalogVendor, VendorCuisineTag, VendorExperienceTag } from "@/types/catalog";
 import type { DiscoveryCategoryId, SearchCategoryId } from "@/types/search";
 
 function productMatchesDiscovery(
@@ -68,10 +68,10 @@ export function vendorPassesExtraFilters(
   const text = q.q?.trim() ?? "";
   if (text.length > 0 && !vendorMatchesTextQuery(vendor, text)) return false;
 
-  if (q.cuisines.length > 0 && !q.cuisines.some((c) => vendor.cuisineTags.includes(c as never))) {
+  if (q.cuisines.length > 0 && !q.cuisines.some((c) => vendor.cuisineTags.includes(c as VendorCuisineTag))) {
     return false;
   }
-  if (q.tags.length > 0 && !q.tags.some((t) => vendor.tags.includes(t as never))) {
+  if (q.tags.length > 0 && !q.tags.some((t) => vendor.tags.includes(t as VendorExperienceTag))) {
     return false;
   }
   if (q.prices.length > 0 && !q.prices.includes(vendor.price)) return false;

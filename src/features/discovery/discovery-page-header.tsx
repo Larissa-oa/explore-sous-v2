@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import {
   CalendarBlankIcon,
   CaretDownIcon,
@@ -8,26 +8,13 @@ import {
   FadersHorizontalIcon,
   MapPinIcon,
 } from "@phosphor-icons/react";
-import { useLocale, useTranslations } from "next-intl";
 
 import { CalendarPicker } from "@/components/pickers/calendar-picker";
 import { LocationPicker } from "@/components/pickers/location-picker";
 import { Button } from "@/components/ui/button";
 import { SearchPickerWrap } from "@/components/search/search-picker-wrap";
-import { getSearchCategoryIds } from "@/lib/data/search-categories";
-import type {
-  DiscoveryPromoId,
-  DiscoverySearchState,
-} from "@/lib/discovery/discovery-query";
-import {
-  discoveryHref,
-  hasDiscoveryLocation,
-  mergeDiscoveryQuery,
-  searchCategoryUsesDateFilter,
-} from "@/lib/discovery/discovery-query";
-import { useMdLayout } from "@/hooks/use-md-layout";
-import { formatIsoDateField, parseIsoDateString, toIsoDateString } from "@/lib/dates";
-import { useRouter } from "@/i18n/navigation";
+import { toIsoDateString } from "@/lib/dates";
+import type { DiscoveryPromoId } from "@/lib/discovery/discovery-query";
 import type { DiscoveryFilterMeta } from "@/types/discovery";
 import type { DiscoveryCategoryId } from "@/types/search";
 import { cn } from "@/lib/utils";
@@ -45,120 +32,175 @@ import {
   discoverySearchOptionRow as searchOptionRow,
   discoverySearchOptionSelected as searchOptionSelected,
 } from "./discovery-header-primitives";
+import { useDiscoveryHeaderState, type DiscoveryPageHeaderProps } from "./use-discovery-header";
 
-const SEARCH_CATEGORY_IDS = getSearchCategoryIds();
+export type { DiscoveryPageHeaderProps } from "./use-discovery-header";
 
-export interface DiscoveryPageHeaderProps {
-  query: DiscoverySearchState;
-  filterMeta: DiscoveryFilterMeta;
+// —— More filters panel body ————————————————————————————————————————————————
+
+function toggleSet<T>(prev: Set<T>, value: T, on: boolean): Set<T> {
+  const next = new Set(prev);
+  if (on) next.add(value);
+  else next.delete(value);
+  return next;
 }
 
-export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderProps) {
-  const t = useTranslations("Discovery.header");
-  const tHome = useTranslations("HomePage.search");
-  const locale = useLocale();
-  const layout = useMdLayout();
-  const router = useRouter();
-  const push = useCallback(
-    (patch: Partial<DiscoverySearchState>) => {
-      router.push(discoveryHref(mergeDiscoveryQuery(query, patch)));
-    },
-    [query, router],
+interface DiscoveryMoreFiltersBodyProps {
+  filterMeta: DiscoveryFilterMeta;
+  draftCuisines: Set<string>;
+  setDraftCuisines: Dispatch<SetStateAction<Set<string>>>;
+  draftPrices: Set<number>;
+  setDraftPrices: Dispatch<SetStateAction<Set<number>>>;
+  draftTags: Set<string>;
+  setDraftTags: Dispatch<SetStateAction<Set<string>>>;
+  draftPromos: Set<DiscoveryPromoId>;
+  setDraftPromos: Dispatch<SetStateAction<Set<DiscoveryPromoId>>>;
+  priceTierAriaLabel: (n: number) => string;
+  sectionLabels: {
+    cuisine: string;
+    price: string;
+    tags: string;
+    promo: string;
+    promoTrending: string;
+    promoNew: string;
+  };
+}
+
+function DiscoveryMoreFiltersBody({
+  filterMeta,
+  draftCuisines,
+  setDraftCuisines,
+  draftPrices,
+  setDraftPrices,
+  draftTags,
+  setDraftTags,
+  draftPromos,
+  setDraftPromos,
+  priceTierAriaLabel,
+  sectionLabels,
+}: DiscoveryMoreFiltersBodyProps) {
+  const priceLabels = [1, 2, 3, 4] as const;
+
+  return (
+    <div className="flex flex-col gap-6">
+      <section>
+        <h3 className="type-body-md-sb text-foreground">{sectionLabels.cuisine}</h3>
+        <div className="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
+          {filterMeta.cuisines.map((c, i) => (
+            <CheckboxRow
+              key={`m-${c}`}
+              id={`d-more-c-${i}`}
+              label={c}
+              checked={draftCuisines.has(c)}
+              onCheckedChange={(on) => setDraftCuisines((prev) => toggleSet(prev, c, on))}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h3 className="type-body-md-sb text-foreground">{sectionLabels.price}</h3>
+        <div className="mt-2 flex flex-col gap-1">
+          {priceLabels.map((n) => (
+            <CheckboxRow
+              key={n}
+              id={`price-${n}`}
+              label={
+                <>
+                  <span className="inline-flex items-center gap-px text-foreground" aria-hidden>
+                    {Array.from({ length: n }, (_, i) => (
+                      <CurrencyEurIcon
+                        key={i}
+                        className="size-[1.0625rem] shrink-0"
+                        weight="bold"
+                        aria-hidden
+                      />
+                    ))}
+                  </span>
+                  <span className="sr-only">{priceTierAriaLabel(n)}</span>
+                </>
+              }
+              checked={draftPrices.has(n)}
+              onCheckedChange={(on) => setDraftPrices((prev) => toggleSet(prev, n, on))}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h3 className="type-body-md-sb text-foreground">{sectionLabels.tags}</h3>
+        <div className="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
+          {filterMeta.tags.map((tag, i) => (
+            <CheckboxRow
+              key={tag}
+              id={`d-more-tag-${i}`}
+              label={tag}
+              checked={draftTags.has(tag)}
+              onCheckedChange={(on) => setDraftTags((prev) => toggleSet(prev, tag, on))}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h3 className="type-body-md-sb text-foreground">{sectionLabels.promo}</h3>
+        <div className="mt-2 flex flex-col gap-1">
+          <CheckboxRow
+            id="promo-trending"
+            label={sectionLabels.promoTrending}
+            checked={draftPromos.has("trendingNow")}
+            onCheckedChange={(on) =>
+              setDraftPromos((prev) => toggleSet<DiscoveryPromoId>(prev, "trendingNow", on))
+            }
+          />
+          <CheckboxRow
+            id="promo-new"
+            label={sectionLabels.promoNew}
+            checked={draftPromos.has("newOnSous")}
+            onCheckedChange={(on) =>
+              setDraftPromos((prev) => toggleSet<DiscoveryPromoId>(prev, "newOnSous", on))
+            }
+          />
+        </div>
+      </section>
+    </div>
   );
+}
 
-  const [openCat, setOpenCat] = useState(false);
-  const [openDate, setOpenDate] = useState(false);
-  const [openLoc, setOpenLoc] = useState(false);
-  const [openCuisine, setOpenCuisine] = useState(false);
-  const [openMore, setOpenMore] = useState(false);
+// —— Main header component ——————————————————————————————————————————————————
 
-  const [locDraft, setLocDraft] = useState<string | null>(() => query.location?.trim() || null);
-
-  const [draftCuisines, setDraftCuisines] = useState<Set<string>>(() => new Set(query.cuisines));
-  const [draftPrices, setDraftPrices] = useState<Set<number>>(() => new Set(query.prices));
-  const [draftTags, setDraftTags] = useState<Set<string>>(() => new Set(query.tags));
-  const [draftPromos, setDraftPromos] = useState<Set<DiscoveryPromoId>>(() => new Set(query.promos));
-
-  const applyLocation = useCallback(
-    (location: string | null) => {
-      const label = location?.trim() ?? "";
-      push({
-        location: label.length > 0 ? label : null,
-        placeId: null,
-      });
-    },
-    [push],
-  );
-
-  const onLocOpenChange = useCallback(
-    (o: boolean) => {
-      if (o) setLocDraft(query.location?.trim() || null);
-      setOpenLoc(o);
-    },
-    [query.location],
-  );
-
-  const onCuisineOpenChange = useCallback(
-    (o: boolean) => {
-      if (o) setDraftCuisines(new Set(query.cuisines));
-      setOpenCuisine(o);
-    },
-    [query.cuisines],
-  );
-
-  const onMoreOpenChange = useCallback(
-    (o: boolean) => {
-      if (o) {
-        setDraftCuisines(new Set(query.cuisines));
-        setDraftPrices(new Set(query.prices));
-        setDraftTags(new Set(query.tags));
-        setDraftPromos(new Set(query.promos));
-      }
-      setOpenMore(o);
-    },
-    [query.cuisines, query.prices, query.promos, query.tags],
-  );
-
-  const categoryOptions = useMemo(
-    () => [
-      {
-        value: "all" as const,
-        label: t("categoryAll"),
-        icon: <SearchCategoryOptionIcon id="all" />,
-      },
-      ...SEARCH_CATEGORY_IDS.map((key) => ({
-        value: key,
-        label: tHome(`categories.${key}`),
-        icon: <SearchCategoryOptionIcon id={key} />,
-      })),
-    ],
-    [t, tHome],
-  );
-
-  const categoryDisplay =
-    categoryOptions.find((o) => o.value === query.category)?.label ?? query.category;
-
-  const dateValue = useMemo(
-    () => parseIsoDateString(query.dateIso),
-    [query.dateIso],
-  );
-
-  const dateDisplay = formatIsoDateField(query.dateIso, locale, t("datePlaceholder"));
-  const showDateField = searchCategoryUsesDateFilter(query.category);
-
-  const locationRaw = query.location?.trim() ?? "";
-  const locationDisplay = locationRaw || t("locationPlaceholder");
-
-  const cuisineCount = query.cuisines.length;
-  const cuisinePillValue =
-    cuisineCount === 0 ? t("cuisinePlaceholder") : t("cuisineCount", { count: cuisineCount });
-
-  const moreActiveCount =
-    query.prices.length + query.tags.length + query.promos.length;
-  const morePillValue =
-    moreActiveCount === 0 ? t("morePlaceholder") : t("moreCount", { count: moreActiveCount });
-
-  const pending = layout === "pending";
+export function DiscoveryPageHeader(props: DiscoveryPageHeaderProps) {
+  const {
+    t, tHome, locale, layout, push, pending,
+    openCat, setOpenCat,
+    openDate, setOpenDate,
+    openLoc, onLocOpenChange,
+    openCuisine, onCuisineOpenChange,
+    openMore, onMoreOpenChange,
+    locDraft, setLocDraft,
+    applyLocation,
+    draftCuisines, setDraftCuisines,
+    draftPrices, setDraftPrices,
+    draftTags, setDraftTags,
+    draftPromos, setDraftPromos,
+    categoryOptions,
+    categoryDisplay,
+    dateValue,
+    dateDisplay,
+    showDateField,
+    locationRaw,
+    locationDisplay,
+    hasLocation,
+    cuisineCount,
+    cuisinePillValue,
+    moreActiveCount,
+    morePillValue,
+    applyCuisine,
+    applyMore,
+    clearMore,
+    filterMeta,
+    query,
+  } = useDiscoveryHeaderState(props);
 
   const categoryPanel = (
     <ul className={cn(searchOptionList, "flex flex-col gap-1")} role="listbox">
@@ -170,16 +212,13 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
               type="button"
               role="option"
               aria-selected={selected}
-              className={cn(
-                searchOptionRow,
-                selected ? searchOptionSelected : searchOptionIdle,
-              )}
+              className={cn(searchOptionRow, selected ? searchOptionSelected : searchOptionIdle)}
               onClick={() => {
                 setOpenCat(false);
                 push({ category: opt.value as DiscoveryCategoryId });
               }}
             >
-              {opt.icon}
+              <SearchCategoryOptionIcon id={opt.value} />
               <span className="min-w-0 flex-1 truncate">{opt.label}</span>
             </button>
           </li>
@@ -230,9 +269,9 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
         onClearApplied={() => {
           setLocDraft(null);
           applyLocation(null);
-          setOpenLoc(false);
+          onLocOpenChange(false);
         }}
-        onClose={() => setOpenLoc(false)}
+        onClose={() => onLocOpenChange(false)}
         locale={locale}
         title={tHome("locationPicker.title")}
         clearLabel={tHome("locationPicker.clear")}
@@ -252,7 +291,7 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
           )}
           onClick={() => {
             applyLocation(locDraft);
-            setOpenLoc(false);
+            onLocOpenChange(false);
           }}
         >
           {t("applyLocation")}
@@ -269,165 +308,12 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
           id={`d-cuisine-${i}`}
           label={c}
           checked={draftCuisines.has(c)}
-          onCheckedChange={(on) => {
-            setDraftCuisines((prev) => {
-              const next = new Set(prev);
-              if (on) next.add(c);
-              else next.delete(c);
-              return next;
-            });
-          }}
+          onCheckedChange={(on) =>
+            setDraftCuisines((prev) => toggleSet(prev, c, on))
+          }
         />
       ))}
     </div>
-  );
-
-  const cuisineFooter = (
-    <ModalFooter
-      clearLabel={t("clearFilters")}
-      applyLabel={t("applyFilters")}
-      onClear={() => setDraftCuisines(new Set())}
-      onApply={() => {
-        push({ cuisines: [...draftCuisines].sort((a, b) => a.localeCompare(b)) });
-        setOpenCuisine(false);
-      }}
-    />
-  );
-
-  const priceLabels = [1, 2, 3, 4] as const;
-  const moreBody = (
-    <div className="flex flex-col gap-6">
-      <section>
-        <h3 className="type-body-md-sb text-foreground">{t("sectionCuisine")}</h3>
-        <div className="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
-          {filterMeta.cuisines.map((c, i) => (
-            <CheckboxRow
-              key={`m-${c}`}
-              id={`d-more-c-${i}`}
-              label={c}
-              checked={draftCuisines.has(c)}
-              onCheckedChange={(on) => {
-                setDraftCuisines((prev) => {
-                  const next = new Set(prev);
-                  if (on) next.add(c);
-                  else next.delete(c);
-                  return next;
-                });
-              }}
-            />
-          ))}
-        </div>
-      </section>
-      <section>
-        <h3 className="type-body-md-sb text-foreground">{t("sectionPrice")}</h3>
-        <div className="mt-2 flex flex-col gap-1">
-          {priceLabels.map((n) => (
-            <CheckboxRow
-              key={n}
-              id={`price-${n}`}
-              label={
-                <>
-                  <span className="inline-flex items-center gap-px text-foreground" aria-hidden>
-                    {Array.from({ length: n }, (_, i) => (
-                      <CurrencyEurIcon
-                        key={i}
-                        className="size-[1.0625rem] shrink-0"
-                        weight="bold"
-                        aria-hidden
-                      />
-                    ))}
-                  </span>
-                  <span className="sr-only">{t("priceTierAria", { level: n })}</span>
-                </>
-              }
-              checked={draftPrices.has(n)}
-              onCheckedChange={(on) => {
-                setDraftPrices((prev) => {
-                  const next = new Set(prev);
-                  if (on) next.add(n);
-                  else next.delete(n);
-                  return next;
-                });
-              }}
-            />
-          ))}
-        </div>
-      </section>
-      <section>
-        <h3 className="type-body-md-sb text-foreground">{t("sectionTags")}</h3>
-        <div className="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
-          {filterMeta.tags.map((tag, i) => (
-            <CheckboxRow
-              key={tag}
-              id={`d-more-tag-${i}`}
-              label={tag}
-              checked={draftTags.has(tag)}
-              onCheckedChange={(on) => {
-                setDraftTags((prev) => {
-                  const next = new Set(prev);
-                  if (on) next.add(tag);
-                  else next.delete(tag);
-                  return next;
-                });
-              }}
-            />
-          ))}
-        </div>
-      </section>
-      <section>
-        <h3 className="type-body-md-sb text-foreground">{t("sectionPromo")}</h3>
-        <div className="mt-2 flex flex-col gap-1">
-          <CheckboxRow
-            id="promo-trending"
-            label={t("promoTrending")}
-            checked={draftPromos.has("trendingNow")}
-            onCheckedChange={(on) =>
-              setDraftPromos((prev) => {
-                const next = new Set(prev);
-                if (on) next.add("trendingNow");
-                else next.delete("trendingNow");
-                return next;
-              })
-            }
-          />
-          <CheckboxRow
-            id="promo-new"
-            label={t("promoNew")}
-            checked={draftPromos.has("newOnSous")}
-            onCheckedChange={(on) =>
-              setDraftPromos((prev) => {
-                const next = new Set(prev);
-                if (on) next.add("newOnSous");
-                else next.delete("newOnSous");
-                return next;
-              })
-            }
-          />
-        </div>
-      </section>
-    </div>
-  );
-
-  const moreFooter = (
-    <ModalFooter
-      clearLabel={t("clearFilters")}
-      applyLabel={t("applyFilters")}
-      onClear={() => {
-        setDraftCuisines(new Set());
-        setDraftPrices(new Set());
-        setDraftTags(new Set());
-        setDraftPromos(new Set());
-      }}
-      onApply={() => {
-        push({
-          cuisines: [...draftCuisines].sort((a, b) => a.localeCompare(b)),
-          prices: [...draftPrices].sort((a, b) => a - b),
-          tags: [...draftTags].sort((a, b) => a.localeCompare(b)),
-          promos: [...draftPromos],
-        });
-        setOpenMore(false);
-      }}
-    />
   );
 
   return (
@@ -468,7 +354,7 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
                 icon={<MapPinIcon className="size-4" weight="bold" aria-hidden />}
                 className={cn(
                   "max-w-[9rem] sm:max-w-[11rem] md:max-w-none",
-                  hasDiscoveryLocation(query) ? PILL_ACTIVE : undefined,
+                  hasLocation ? PILL_ACTIVE : undefined,
                 )}
               />
             }
@@ -496,14 +382,17 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
             />
           ) : null}
 
-          <span className="mx-0.5 hidden h-7 w-px shrink-0 self-center bg-border md:inline-block" aria-hidden />
+          <span
+            className="mx-0.5 hidden h-7 w-px shrink-0 self-center bg-border md:inline-block"
+            aria-hidden
+          />
 
           <button
             type="button"
             disabled={pending}
             className={cn(PILL_BASE, cuisineCount > 0 && PILL_ACTIVE)}
             aria-label={`${t("cuisineLabel")}: ${cuisinePillValue}`}
-            onClick={() => setOpenCuisine(true)}
+            onClick={() => onCuisineOpenChange(true)}
           >
             <span className="min-w-0 flex-1 truncate text-left text-sm font-semibold leading-tight text-inherit">
               {cuisinePillValue}
@@ -516,7 +405,7 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
             disabled={pending}
             className={cn(PILL_BASE, moreActiveCount > 0 && PILL_ACTIVE)}
             aria-label={`${t("moreLabel")}: ${morePillValue}`}
-            onClick={() => setOpenMore(true)}
+            onClick={() => onMoreOpenChange(true)}
           >
             <FadersHorizontalIcon className="size-4 shrink-0 text-inherit" weight="bold" aria-hidden />
             <span className="min-w-0 flex-1 truncate text-left text-sm font-semibold leading-tight text-inherit">
@@ -537,7 +426,14 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
         open={openCuisine}
         onOpenChange={onCuisineOpenChange}
         title={t("cuisineModalTitle")}
-        footer={cuisineFooter}
+        footer={
+          <ModalFooter
+            clearLabel={t("clearFilters")}
+            applyLabel={t("applyFilters")}
+            onClear={() => setDraftCuisines(new Set())}
+            onApply={applyCuisine}
+          />
+        }
       >
         {cuisineBody}
       </FilterModalShell>
@@ -547,9 +443,35 @@ export function DiscoveryPageHeader({ query, filterMeta }: DiscoveryPageHeaderPr
         open={openMore}
         onOpenChange={onMoreOpenChange}
         title={t("moreModalTitle")}
-        footer={moreFooter}
+        footer={
+          <ModalFooter
+            clearLabel={t("clearFilters")}
+            applyLabel={t("applyFilters")}
+            onClear={clearMore}
+            onApply={applyMore}
+          />
+        }
       >
-        {moreBody}
+        <DiscoveryMoreFiltersBody
+          filterMeta={filterMeta}
+          draftCuisines={draftCuisines}
+          setDraftCuisines={setDraftCuisines}
+          draftPrices={draftPrices}
+          setDraftPrices={setDraftPrices}
+          draftTags={draftTags}
+          setDraftTags={setDraftTags}
+          draftPromos={draftPromos}
+          setDraftPromos={setDraftPromos}
+          priceTierAriaLabel={(n) => t("priceTierAria", { level: n })}
+          sectionLabels={{
+            cuisine: t("sectionCuisine"),
+            price: t("sectionPrice"),
+            tags: t("sectionTags"),
+            promo: t("sectionPromo"),
+            promoTrending: t("promoTrending"),
+            promoNew: t("promoNew"),
+          }}
+        />
       </FilterModalShell>
     </>
   );

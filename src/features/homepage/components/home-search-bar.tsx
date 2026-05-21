@@ -7,7 +7,13 @@ import { CaretDownIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 import { CalendarPicker } from "@/components/pickers/calendar-picker";
 import { LocationPicker } from "@/components/pickers/location-picker";
-import { DiscoveryHeaderCategoryIcon as SearchCategoryOptionIcon } from "@/features/discovery/discovery-header-primitives";
+import {
+  DiscoveryHeaderCategoryIcon as SearchCategoryOptionIcon,
+  discoverySearchOptionIdle as searchOptionIdle,
+  discoverySearchOptionList as searchOptionList,
+  discoverySearchOptionRow as searchOptionRow,
+  discoverySearchOptionSelected as searchOptionSelected,
+} from "@/features/discovery/discovery-header-primitives";
 import { SearchPickerWrap } from "@/components/search/search-picker-wrap";
 import { useMdLayout } from "@/hooks/use-md-layout";
 import { getSearchCategoryIds } from "@/lib/data/search-categories";
@@ -43,12 +49,6 @@ const SEARCH_BAR_SURFACE =
 const SEARCH_FIELD_CELL = "min-h-0 min-w-0 flex-1 p-2 md:px-2 md:py-1.5";
 
 const DETAIL_SHEET_MIN = "min-h-[min(72vh,28rem)]";
-
-const searchOptionList = "max-h-[min(50vh,320px)] overflow-y-auto p-2";
-const searchOptionRow =
-  "flex w-full items-center gap-3 rounded-search-inner px-4 py-2.5 text-left text-sm font-normal leading-snug text-foreground transition-colors";
-const searchOptionSelected = "bg-ds-blue-600/15 font-medium text-foreground";
-const searchOptionIdle = "hover:bg-interactive-hover";
 
 function FieldTrigger({
   label,
