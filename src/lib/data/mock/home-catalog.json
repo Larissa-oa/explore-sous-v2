@@ -1,0 +1,1597 @@
+{
+  "vendorFieldOptions": {
+    "cuisineTags": [
+      "Dutch",
+      "French",
+      "Mediterranean",
+      "Asian",
+      "Fusion",
+      "Italian",
+      "Latin American",
+      "Middle Eastern",
+      "Seafood",
+      "European"
+    ],
+    "tags": [
+      "Fine Dining",
+      "Shared Dining",
+      "Luxury",
+      "Casual",
+      "Romantic",
+      "Family Friendly",
+      "Chef Special",
+      "Wine Pairing",
+      "Street Food",
+      "Tasting Menu"
+    ],
+    "promoBadge": [
+      "trendingNow",
+      "newOnSous",
+      "editorsPick",
+      "seasonalHighlight",
+      "limitedTime",
+      "guestFavorite",
+      "staffPick",
+      "topRated",
+      "dateNight",
+      "chefSpotlight"
+    ]
+  },
+  "productFieldOptions": {
+    "availableDays": [
+      "su",
+      "mo",
+      "tu",
+      "we",
+      "th",
+      "fr",
+      "sa"
+    ],
+    "category": [
+      "pickup",
+      "delivery",
+      "reservation"
+    ]
+  },
+  "vendors": [
+    {
+      "id": "vendor_001",
+      "name": "Ron Gastrobar",
+      "slug": "ron-gastrobar",
+      "websiteUrl": "https://eatsous.com/en/collections/ron-gastrobar",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/ron-gastrobar",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Fusion",
+        "Dutch"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Shared Dining",
+        "Luxury"
+      ],
+      "trendingRailOrder": 1,
+      "promoBadge": "trendingNow",
+      "trendingTeaser": "Chef-led tasting menus and shared dining in Amsterdam.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/7-LVR00586-Square_11zon_fe6cb5e5-6d16-4fa2-9b3c-074357646c5e.jpg?v=1764663591&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-Screenshot2023-08-07at15.12.41_Large_c63877b4-ffdd-429a-aae9-865081ed3bae.jpg?v=1764663591&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-Duckbox_cover.jpg?v=1763286937&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_002",
+      "name": "NENI Amsterdam",
+      "slug": "neni-amsterdam",
+      "websiteUrl": "https://eatsous.com/en/collections/neni-amsterdam",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/neni-amsterdam",
+      "price": 3,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Mediterranean",
+        "Fusion"
+      ],
+      "tags": [
+        "Shared Dining",
+        "Chef Special",
+        "Romantic"
+      ],
+      "trendingRailOrder": 2,
+      "promoBadge": "newOnSous",
+      "trendingTeaser": "Mediterranean sharing plates and lively dining.",
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/NENI_de2604eb-2cfa-4584-87ed-7227afbf26e8.webp?v=1761068722&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-Duck_Cut.jpg?v=1763286937&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450504.jpg?v=1763290671&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-LVR00586-Square_11zon_fe6cb5e5-6d16-4fa2-9b3c-074357646c5e.jpg?v=1764663591&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-Sinne_collab-1.jpg?v=1761085016&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_003",
+      "name": "Restaurant Parkheuvel",
+      "slug": "restaurant-parkheuvel",
+      "websiteUrl": "https://eatsous.com/en/collections/restaurant-parkheuvel",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/restaurant-parkheuvel",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": false,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "Seafood"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Luxury",
+        "Wine Pairing"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "editorsPick",
+      "trendingTeaser": "Restaurant Parkheuvel — French · Seafood. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600",
+        "https://eatsous.com/cdn/shop/files/2023.11.01_Restaurant_Ster_-_Sous_039.jpg?v=1700142552&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_004",
+      "name": "Restaurant Sinne",
+      "slug": "restaurant-sinne",
+      "websiteUrl": "https://eatsous.com/en/collections/restaurant-sinne",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/restaurant-sinne",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "Fusion"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Romantic",
+        "Chef Special"
+      ],
+      "trendingRailOrder": 3,
+      "promoBadge": "trendingNow",
+      "trendingTeaser": "French chef’s table and seasonal tasting menus.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-Sinne_collab-1.jpg?v=1761085016&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-TheSiren_food_DeniseValkPhotography43.jpg?v=1761085029&width=1600",
+        "https://eatsous.com/cdn/shop/files/2023.11.01_Restaurant_Ster_-_Sous_039.jpg?v=1700142552&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_005",
+      "name": "Aan de Poel",
+      "slug": "aan-de-poel",
+      "websiteUrl": "https://eatsous.com/en/collections/aan-de-poel",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/aan-de-poel",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": false,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "Dutch"
+      ],
+      "tags": [
+        "Luxury",
+        "Wine Pairing",
+        "Fine Dining"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "limitedTime",
+      "trendingTeaser": "Aan de Poel — French · Dutch. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-restaurantaandepoel_453485172_1051979679988276_8515185641573388160_n.jpg?v=1761084996&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_006",
+      "name": "Restaurant Zheng",
+      "slug": "restaurant-zheng",
+      "websiteUrl": "https://eatsous.com/en/collections/restaurant-zheng",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/restaurant-zheng",
+      "price": 3,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Asian",
+        "Fusion"
+      ],
+      "tags": [
+        "Tasting Menu",
+        "Luxury",
+        "Chef Special"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "guestFavorite",
+      "trendingTeaser": "Restaurant Zheng — Asian · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/65-Duckbox_cover.jpg?v=1763286937&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-Duck_Cut.jpg?v=1763286937&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450504.jpg?v=1763290671&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_007",
+      "name": "Restaurant Fris",
+      "slug": "restaurant-fris",
+      "websiteUrl": "https://frisrestaurant.nl",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/restaurant-fris",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "Fusion"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Luxury",
+        "Chef Special"
+      ],
+      "trendingRailOrder": 4,
+      "promoBadge": "trendingNow",
+      "trendingTeaser": "Seasonal fine dining with a focus on Dutch produce.",
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/177-Fris_06-03-2025_-232_b8c160bd-a239-4659-8c93-4fc93ffd9391.jpg?v=1761068553&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-foto_sous_alle_gerechten.jpg?v=1768305869&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-FRIS_Sous_8_april_voorgerecht_-_small_88e1a6af-0ab8-485d-9067-0ae56feb15e4.jpg?v=1775983470&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_008",
+      "name": "BlendHouse",
+      "slug": "blendhouse",
+      "websiteUrl": "https://blendhouse.example.com",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/blendhouse",
+      "price": 3,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Fusion",
+        "Mediterranean"
+      ],
+      "tags": [
+        "Shared Dining",
+        "Casual",
+        "Romantic"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "topRated",
+      "trendingTeaser": "BlendHouse — Fusion · Mediterranean. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/171-Z81_9128.jpg?v=1743157551&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_009",
+      "name": "El Puente",
+      "slug": "el-puente",
+      "websiteUrl": "https://elpuente.example.com",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/el-puente",
+      "price": 2,
+      "supportsReservations": false,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Latin American",
+        "Fusion"
+      ],
+      "tags": [
+        "Street Food",
+        "Casual",
+        "Shared Dining"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "dateNight",
+      "trendingTeaser": "El Puente — Latin American · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/20-18-2025-08-12_El_Puente.jpg?v=1761085862&width=1600",
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_2_van_60.jpg?v=1763997268&width=1600",
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_24_van_60.jpg?v=1764000283&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_010",
+      "name": "Sab's Deli",
+      "slug": "sabs-deli",
+      "websiteUrl": "https://sabsdeli.example.com",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/sabs-deli",
+      "price": 2,
+      "supportsReservations": false,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Mediterranean",
+        "Fusion"
+      ],
+      "tags": [
+        "Casual",
+        "Family Friendly",
+        "Street Food"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "chefSpotlight",
+      "trendingTeaser": "Sab's Deli — Mediterranean · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/141-www.guyhouben.com_brut172_paasbox-8.jpg?v=1743166314&width=1600",
+        "https://eatsous.com/cdn/shop/files/20-18-2025-08-12_El_Puente.jpg?v=1761085862&width=1600",
+        "https://eatsous.com/cdn/shop/files/20-22-2025-08-12_El_Puente_e9a892eb-f5d2-47b4-8d06-c30e4bd16f86.jpg?v=1761085864&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_011",
+      "name": "Umami by Han",
+      "slug": "umami-by-han",
+      "websiteUrl": "https://www.umamirestaurant.nl",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/umami-by-han",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Asian",
+        "Fusion"
+      ],
+      "tags": [
+        "Shared Dining",
+        "Luxury",
+        "Tasting Menu"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "trendingNow",
+      "trendingTeaser": "Umami by Han — Asian · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/65-65-P1450504.jpg?v=1763290671&width=1600",
+        "https://eatsous.com/cdn/shop/files/141-www.guyhouben.com_brut172_paasbox-8.jpg?v=1743166314&width=1600",
+        "https://eatsous.com/cdn/shop/files/171-Z81_9128.jpg?v=1743157551&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_012",
+      "name": "Streetfood by Han",
+      "slug": "streetfood-by-han",
+      "websiteUrl": "https://www.streetfoodbyhan.nl",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/streetfood-by-han",
+      "price": 1,
+      "supportsReservations": false,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Asian",
+        "Fusion"
+      ],
+      "tags": [
+        "Street Food",
+        "Casual",
+        "Family Friendly"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "newOnSous",
+      "trendingTeaser": "Streetfood by Han — Asian · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/web_chillichans_arugulastudio-12_1688f9c4-2dd8-41ed-9daa-f1253ec0462e.jpg?v=1728382991&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600",
+        "https://eatsous.com/cdn/shop/files/2023.11.01_Restaurant_Ster_-_Sous_039.jpg?v=1700142552&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_013",
+      "name": "Ron Blaauw",
+      "slug": "ron-blaauw",
+      "websiteUrl": "https://eatsous.com/en/collections/ron-blaauw",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/ron-blaauw",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Dutch",
+        "Fusion"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Tasting Menu",
+        "Chef Special"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "editorsPick",
+      "trendingTeaser": "Ron Blaauw — Dutch · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-cb2.jpg?v=1761085570&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-LVR00586-Square_11zon_fe6cb5e5-6d16-4fa2-9b3c-074357646c5e.jpg?v=1764663591&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-Duck_Cut.jpg?v=1763286937&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_014",
+      "name": "Brasserie Van Dam",
+      "slug": "brasserie-van-dam",
+      "websiteUrl": "https://eatsous.com/en/collections/brasserie-van-dam",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/brasserie-van-dam",
+      "price": 2,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "European"
+      ],
+      "tags": [
+        "Casual",
+        "Family Friendly",
+        "Shared Dining"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "seasonalHighlight",
+      "trendingTeaser": "Brasserie Van Dam — French · European. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NENI.jpg?v=1761085301&width=1600",
+        "https://eatsous.com/cdn/shop/files/171-Z81_9128.jpg?v=1743157551&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_015",
+      "name": "Bergpaviljoen Bistronomique",
+      "slug": "bergpaviljoen-bistronomique",
+      "websiteUrl": "https://eatsous.com/en/collections/bergpaviljoen-bistronomique",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/bergpaviljoen-bistronomique",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": false,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "Seafood"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Wine Pairing",
+        "Luxury"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "limitedTime",
+      "trendingTeaser": "Bergpaviljoen Bistronomique — French · Seafood. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-TheSiren_food_DeniseValkPhotography43.jpg?v=1761085029&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600",
+        "https://eatsous.com/cdn/shop/files/195-Amuse_db1cc319-84ba-4159-a4a6-9c93547cb318.jpg?v=1773249449&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_016",
+      "name": "Nick de Kousemaeker & Herman den Blijker",
+      "slug": "nick-de-kousemaeker-herman-den-blijker",
+      "websiteUrl": "https://eatsous.com/en/collections/nick-de-kousemaeker-herman-den-blijker",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/nick-de-kousemaeker-herman-den-blijker",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "European",
+        "Fusion"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Tasting Menu",
+        "Chef Special"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "guestFavorite",
+      "trendingTeaser": "Nick de Kousemaeker & Herman den Blijker — European · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/195-Brood_54be32ff-150f-4a60-9da0-bc864bf5452d.jpg?v=1773249466&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-Overzicht_0.jpg?v=1772192745&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450261.jpg?v=1763290727&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_017",
+      "name": "Le Barrage",
+      "slug": "le-barrage",
+      "websiteUrl": "https://eatsous.com/en/collections/le-barrage",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/le-barrage",
+      "price": 3,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "Seafood"
+      ],
+      "tags": [
+        "Romantic",
+        "Fine Dining",
+        "Wine Pairing"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "staffPick",
+      "trendingTeaser": "Le Barrage — French · Seafood. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/177-Fris_06-03-2025_-21.jpg?v=1744302944&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600",
+        "https://eatsous.com/cdn/shop/files/141-www.guyhouben.com_brut172_paasbox-8.jpg?v=1743166314&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_018",
+      "name": "ShakShuk",
+      "slug": "shakshuk",
+      "websiteUrl": "https://eatsous.com/en/collections/shakshuk",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/shakshuk",
+      "price": 2,
+      "supportsReservations": false,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Middle Eastern",
+        "Mediterranean"
+      ],
+      "tags": [
+        "Shared Dining",
+        "Casual",
+        "Family Friendly"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "topRated",
+      "trendingTeaser": "ShakShuk — Middle Eastern · Mediterranean. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_2_van_60.jpg?v=1763997268&width=1600",
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_24_van_60.jpg?v=1764000283&width=1600",
+        "https://eatsous.com/cdn/shop/files/20-22-2025-08-12_El_Puente_e9a892eb-f5d2-47b4-8d06-c30e4bd16f86.jpg?v=1761085864&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_019",
+      "name": "GEM | Soenil Bahadoer",
+      "slug": "gem-soenil-bahadoer",
+      "websiteUrl": "https://eatsous.com/en/collections/gem-soenil-bahadoer",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/gem-soenil-bahadoer",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Latin American",
+        "Fusion"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Luxury",
+        "Tasting Menu"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "dateNight",
+      "trendingTeaser": "GEM | Soenil Bahadoer — Latin American · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-Sinne_collab-1.jpg?v=1761085016&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-restaurantaandepoel_453485172_1051979679988276_8515185641573388160_n.jpg?v=1761084996&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-Screenshot2023-08-07at15.12.41_Large_c63877b4-ffdd-429a-aae9-865081ed3bae.jpg?v=1764663591&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_020",
+      "name": "Restaurant Daalder",
+      "slug": "restaurant-daalder",
+      "websiteUrl": "https://eatsous.com/en/collections/restaurant-daalder",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/restaurant-daalder",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": false,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Dutch",
+        "Fusion"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Wine Pairing",
+        "Chef Special"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "chefSpotlight",
+      "trendingTeaser": "Restaurant Daalder — Dutch · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/2023.11.01_Restaurant_Ster_-_Sous_039.jpg?v=1700142552&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-foto_sous_alle_gerechten.jpg?v=1768305869&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-Duckbox_cover.jpg?v=1763286937&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_021",
+      "name": "NonnaPepa",
+      "slug": "nonna-pepa",
+      "websiteUrl": "https://eatsous.com/en/collections/nonna-pepa",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/nonna-pepa",
+      "price": 2,
+      "supportsReservations": false,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Italian",
+        "Mediterranean"
+      ],
+      "tags": [
+        "Family Friendly",
+        "Casual",
+        "Shared Dining"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "trendingNow",
+      "trendingTeaser": "NonnaPepa — Italian · Mediterranean. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/NENI_de2604eb-2cfa-4584-87ed-7227afbf26e8.webp?v=1761068722&width=1600",
+        "https://eatsous.com/cdn/shop/files/171-Z81_9128.jpg?v=1743157551&width=1600",
+        "https://eatsous.com/cdn/shop/files/web_chillichans_arugulastudio-12_1688f9c4-2dd8-41ed-9daa-f1253ec0462e.jpg?v=1728382991&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_022",
+      "name": "Restaurant Bolenius",
+      "slug": "restaurant-bolenius",
+      "websiteUrl": "https://eatsous.com/en/collections/restaurant-bolenius",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/restaurant-bolenius",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Dutch",
+        "European"
+      ],
+      "tags": [
+        "Fine Dining",
+        "Luxury",
+        "Romantic"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "newOnSous",
+      "trendingTeaser": "Restaurant Bolenius — Dutch · European. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/177-Fris_06-03-2025_-232_b8c160bd-a239-4659-8c93-4fc93ffd9391.jpg?v=1761068553&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-FRIS_Sous_8_april_voorgerecht_-_small_88e1a6af-0ab8-485d-9067-0ae56feb15e4.jpg?v=1775983470&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_023",
+      "name": "Chateaubriand Traiteur",
+      "slug": "chateaubriand-traiteur",
+      "websiteUrl": "https://eatsous.com/en/collections/chateaubriand-traiteur",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/chateaubriand-traiteur",
+      "price": 3,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "French",
+        "European"
+      ],
+      "tags": [
+        "Casual",
+        "Shared Dining",
+        "Family Friendly"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "editorsPick",
+      "trendingTeaser": "Chateaubriand Traiteur — French · European. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/20-18-2025-08-12_El_Puente.jpg?v=1761085862&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-cb2.jpg?v=1761085570&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450504.jpg?v=1763290671&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_024",
+      "name": "Raïnaraï",
+      "slug": "rainarai",
+      "websiteUrl": "https://eatsous.com/en/collections/rainarai",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/rainarai",
+      "price": 2,
+      "supportsReservations": false,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Mediterranean",
+        "Middle Eastern"
+      ],
+      "tags": [
+        "Casual",
+        "Street Food",
+        "Shared Dining"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "seasonalHighlight",
+      "trendingTeaser": "Raïnaraï — Mediterranean · Middle Eastern. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600",
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_2_van_60.jpg?v=1763997268&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    },
+    {
+      "id": "vendor_025",
+      "name": "Koninklijke Schmidt Zeevis Rotterdam",
+      "slug": "koninklijke-schmidt-zeevis-rotterdam",
+      "websiteUrl": "https://eatsous.com/en/collections/koninklijke-schmidt-zeevis-rotterdam",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/koninklijke-schmidt-zeevis-rotterdam",
+      "price": 4,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Seafood",
+        "Dutch"
+      ],
+      "tags": [
+        "Luxury",
+        "Fine Dining",
+        "Chef Special"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "limitedTime",
+      "trendingTeaser": "Koninklijke Schmidt Zeevis Rotterdam — Seafood · Dutch. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600",
+        "https://eatsous.com/cdn/shop/files/195-Amuse_db1cc319-84ba-4159-a4a6-9c93547cb318.jpg?v=1773249449&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-TheSiren_food_DeniseValkPhotography43.jpg?v=1761085029&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.\nInteger nec odio praesent libero sed cursus ante dapibus diam.\nDonec quis mi sed vel placerat erat egestas vestibulum metus.\nCurabitur sodales ligula in libero sed dignissim lacinia nunc feugiat."
+    },
+    {
+      "id": "vendor_026",
+      "name": "The Flavors Lab",
+      "slug": "the-flavors-lab",
+      "websiteUrl": "https://eatsous.com/en/collections/the-flavors-lab",
+      "sousCollectionUrl": "https://eatsous.com/en/collections/the-flavors-lab",
+      "price": 3,
+      "supportsReservations": true,
+      "supportsPickup": true,
+      "supportsDelivery": true,
+      "cuisineTags": [
+        "Asian",
+        "Fusion"
+      ],
+      "tags": [
+        "Casual",
+        "Romantic",
+        "Chef Special"
+      ],
+      "trendingRailOrder": null,
+      "promoBadge": "guestFavorite",
+      "trendingTeaser": "The Flavors Lab — Asian · Fusion. Menus and experiences on SOUS.",
+      "images": [
+        "https://eatsous.com/cdn/shop/files/7-Overzicht_0.jpg?v=1772192745&width=1600",
+        "https://eatsous.com/cdn/shop/files/141-www.guyhouben.com_brut172_paasbox-8.jpg?v=1743166314&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450261.jpg?v=1763290727&width=1600"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nFusce nec tellus sed augue semper porta mauris massa consectetuer.\nNulla quis sem at nibh elementum imperdiet duis sagittis ipsum."
+    }
+  ],
+  "products": [
+    {
+      "id": "product_001",
+      "vendorId": "vendor_001",
+      "category": "pickup",
+      "name": "Ron Gastrobar Shared Dining Box",
+      "description": "A luxury shared dining menu inspired by Ron Gastrobar classics.",
+      "pricePerPerson": {
+        "amount": 42.5
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "th",
+        "fr"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-cb2.jpg?v=1761085570&width=1600",
+        "https://eatsous.com/cdn/shop/files/web_chillichans_arugulastudio-12_1688f9c4-2dd8-41ed-9daa-f1253ec0462e.jpg?v=1728382991&width=1600"
+      ]
+    },
+    {
+      "id": "product_002",
+      "vendorId": "vendor_002",
+      "category": "reservation",
+      "name": "Big Balagan Experience",
+      "description": "A vibrant Mediterranean feast experience at NENI Amsterdam.",
+      "pricePerPerson": {
+        "amount": 78
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 150,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/NENI_de2604eb-2cfa-4584-87ed-7227afbf26e8.webp?v=1761068722&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-LVR00586-Square_11zon_fe6cb5e5-6d16-4fa2-9b3c-074357646c5e.jpg?v=1764663591&width=1600"
+      ]
+    },
+    {
+      "id": "product_003",
+      "vendorId": "vendor_003",
+      "category": "delivery",
+      "name": "Parkheuvel Signature Dinner",
+      "description": "Michelin-inspired 4-course delivery menu.",
+      "pricePerPerson": {
+        "amount": 95
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "th",
+        "fr",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/65-Duckbox_cover.jpg?v=1763286937&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-Duck_Cut.jpg?v=1763286937&width=1600"
+      ]
+    },
+    {
+      "id": "product_004",
+      "vendorId": "vendor_004",
+      "category": "reservation",
+      "name": "Restaurant Sinne Chef Table",
+      "description": "Exclusive reservation-only chef tasting experience.",
+      "pricePerPerson": {
+        "amount": 110
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 180,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/65-65-P1450504.jpg?v=1763290671&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450261.jpg?v=1763290727&width=1600"
+      ]
+    },
+    {
+      "id": "product_005",
+      "vendorId": "vendor_005",
+      "category": "delivery",
+      "name": "Aan de Poel Luxury Home Dining",
+      "description": "Curated luxury home dining experience with wine pairing.",
+      "pricePerPerson": {
+        "amount": 125
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "fr",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/195-Amuse_db1cc319-84ba-4159-a4a6-9c93547cb318.jpg?v=1773249449&width=1600",
+        "https://eatsous.com/cdn/shop/files/195-Brood_54be32ff-150f-4a60-9da0-bc864bf5452d.jpg?v=1773249466&width=1600"
+      ]
+    },
+    {
+      "id": "product_006",
+      "vendorId": "vendor_006",
+      "category": "pickup",
+      "name": "Zheng Dim Sum Menu",
+      "description": "Signature dim sum and duck pancake menu for pickup.",
+      "pricePerPerson": {
+        "amount": 36
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "we",
+        "th",
+        "fr",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/7-Overzicht_0.jpg?v=1772192745&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-Screenshot2023-08-07at15.12.41_Large_c63877b4-ffdd-429a-aae9-865081ed3bae.jpg?v=1764663591&width=1600"
+      ]
+    },
+    {
+      "id": "product_007",
+      "vendorId": "vendor_007",
+      "category": "reservation",
+      "name": "Fris Seasonal Chef Experience",
+      "description": "A seasonal tasting menu curated by Restaurant Fris.",
+      "pricePerPerson": {
+        "amount": 98
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 165,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/177-Fris_06-03-2025_-232_b8c160bd-a239-4659-8c93-4fc93ffd9391.jpg?v=1761068553&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-foto_sous_alle_gerechten.jpg?v=1768305869&width=1600"
+      ]
+    },
+    {
+      "id": "product_008",
+      "vendorId": "vendor_007",
+      "category": "delivery",
+      "name": "Fris Home Dining Box",
+      "description": "Luxury home dining menu with curated plating instructions.",
+      "pricePerPerson": {
+        "amount": 72
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "fr"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/177-FRIS_Sous_8_april_voorgerecht_-_small_88e1a6af-0ab8-485d-9067-0ae56feb15e4.jpg?v=1775983470&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-Fris_06-03-2025_-21.jpg?v=1744302944&width=1600"
+      ]
+    },
+    {
+      "id": "product_009",
+      "vendorId": "vendor_008",
+      "category": "pickup",
+      "name": "BlendHouse Shared Mezze Box",
+      "description": "Mediterranean-inspired mezze and sharing plates.",
+      "pricePerPerson": {
+        "amount": 39
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "th",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/171-Z81_9128.jpg?v=1743157551&width=1600",
+        "https://eatsous.com/cdn/shop/collections/177-Fris_06-03-2025_-232_b8c160bd-a239-4659-8c93-4fc93ffd9391.jpg?v=1761068553&width=1600"
+      ]
+    },
+    {
+      "id": "product_010",
+      "vendorId": "vendor_008",
+      "category": "reservation",
+      "name": "BlendHouse Romantic Dinner",
+      "description": "A reservation-only romantic dining experience.",
+      "pricePerPerson": {
+        "amount": 64
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 120,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/NENI_de2604eb-2cfa-4584-87ed-7227afbf26e8.webp?v=1761068722&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NENI.jpg?v=1761085301&width=1600"
+      ]
+    },
+    {
+      "id": "product_011",
+      "vendorId": "vendor_009",
+      "category": "delivery",
+      "name": "El Puente Taco Fiesta",
+      "description": "Street food inspired taco and cocktail delivery menu.",
+      "pricePerPerson": {
+        "amount": 28
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "th",
+        "fr",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-Sinne_collab-1.jpg?v=1761085016&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-restaurantaandepoel_453485172_1051979679988276_8515185641573388160_n.jpg?v=1761084996&width=1600"
+      ]
+    },
+    {
+      "id": "product_012",
+      "vendorId": "vendor_009",
+      "category": "pickup",
+      "name": "El Puente Nacho Box",
+      "description": "Loaded nachos and street snacks for pickup.",
+      "pricePerPerson": {
+        "amount": 18
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-TheSiren_food_DeniseValkPhotography43.jpg?v=1761085029&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600"
+      ]
+    },
+    {
+      "id": "product_013",
+      "vendorId": "vendor_010",
+      "category": "pickup",
+      "name": "Sab's Deli Lunch Box",
+      "description": "Fresh deli sandwiches and Mediterranean salads.",
+      "pricePerPerson": {
+        "amount": 16
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "fr",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600",
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_2_van_60.jpg?v=1763997268&width=1600"
+      ]
+    },
+    {
+      "id": "product_014",
+      "vendorId": "vendor_010",
+      "category": "delivery",
+      "name": "Sab's Family Dinner",
+      "description": "Mediterranean comfort dishes for family sharing.",
+      "pricePerPerson": {
+        "amount": 24
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "th"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_24_van_60.jpg?v=1764000283&width=1600",
+        "https://eatsous.com/cdn/shop/files/20-18-2025-08-12_El_Puente.jpg?v=1761085862&width=1600"
+      ]
+    },
+    {
+      "id": "product_015",
+      "vendorId": "vendor_011",
+      "category": "reservation",
+      "name": "Umami Shared Dining Experience",
+      "description": "Asian fusion tasting experience with wine pairings.",
+      "pricePerPerson": {
+        "amount": 84
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 140,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/20-22-2025-08-12_El_Puente_e9a892eb-f5d2-47b4-8d06-c30e4bd16f86.jpg?v=1761085864&width=1600",
+        "https://eatsous.com/cdn/shop/files/141-www.guyhouben.com_brut172_paasbox-8.jpg?v=1743166314&width=1600"
+      ]
+    },
+    {
+      "id": "product_016",
+      "vendorId": "vendor_011",
+      "category": "reservation",
+      "name": "Umami Chef Table",
+      "description": "Reservation-only chef tasting journey.",
+      "pricePerPerson": {
+        "amount": 120
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 180,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/171-Z81_9128.jpg?v=1743157551&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600"
+      ]
+    },
+    {
+      "id": "product_017",
+      "vendorId": "vendor_012",
+      "category": "pickup",
+      "name": "Streetfood Bao Box",
+      "description": "Asian bao buns and street snacks for pickup.",
+      "pricePerPerson": {
+        "amount": 14
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "fr"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/2023.11.01_Restaurant_Ster_-_Sous_039.jpg?v=1700142552&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-cb2.jpg?v=1761085570&width=1600"
+      ]
+    },
+    {
+      "id": "product_018",
+      "vendorId": "vendor_012",
+      "category": "delivery",
+      "name": "Streetfood Ramen Night",
+      "description": "Comfort ramen bowls and sides delivered fresh.",
+      "pricePerPerson": {
+        "amount": 21
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "we",
+        "fr",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/web_chillichans_arugulastudio-12_1688f9c4-2dd8-41ed-9daa-f1253ec0462e.jpg?v=1728382991&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-LVR00586-Square_11zon_fe6cb5e5-6d16-4fa2-9b3c-074357646c5e.jpg?v=1764663591&width=1600"
+      ]
+    },
+    {
+      "id": "product_019",
+      "vendorId": "vendor_013",
+      "category": "delivery",
+      "name": "Ron Blaauw Rijsttafel Box",
+      "description": "Indonesian–Dutch rijsttafel classics to finish at home.",
+      "pricePerPerson": {
+        "amount": 31
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "th",
+        "fr"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-cb2.jpg?v=1761085570&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-LVR00586-Square_11zon_fe6cb5e5-6d16-4fa2-9b3c-074357646c5e.jpg?v=1764663591&width=1600"
+      ]
+    },
+    {
+      "id": "product_020",
+      "vendorId": "vendor_014",
+      "category": "pickup",
+      "name": "Brasserie Van Dam Bistro Box",
+      "description": "French brasserie favourites for a relaxed night in.",
+      "pricePerPerson": {
+        "amount": 29
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "th",
+        "fr",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-NENI.jpg?v=1761085301&width=1600"
+      ]
+    },
+    {
+      "id": "product_021",
+      "vendorId": "vendor_015",
+      "category": "reservation",
+      "name": "Bergpaviljoen Chef’s Table",
+      "description": "Bistronomic tasting with North Sea seafood highlights.",
+      "pricePerPerson": {
+        "amount": 115
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 150,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-TheSiren_food_DeniseValkPhotography43.jpg?v=1761085029&width=1600",
+        "https://eatsous.com/cdn/shop/files/195-Amuse_db1cc319-84ba-4159-a4a6-9c93547cb318.jpg?v=1773249449&width=1600"
+      ]
+    },
+    {
+      "id": "product_022",
+      "vendorId": "vendor_016",
+      "category": "delivery",
+      "name": "GOUD Home Experience",
+      "description": "Multi-course box inspired by television’s culinary duo.",
+      "pricePerPerson": {
+        "amount": 79.5
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "fr",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/195-Brood_54be32ff-150f-4a60-9da0-bc864bf5452d.jpg?v=1773249466&width=1600",
+        "https://eatsous.com/cdn/shop/files/7-Overzicht_0.jpg?v=1772192745&width=1600"
+      ]
+    },
+    {
+      "id": "product_023",
+      "vendorId": "vendor_017",
+      "category": "reservation",
+      "name": "Le Barrage Signature Dinner",
+      "description": "Waterfront-inspired French menu for dine-in.",
+      "pricePerPerson": {
+        "amount": 60
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 135,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/177-Fris_06-03-2025_-21.jpg?v=1744302944&width=1600",
+        "https://eatsous.com/cdn/shop/files/141-www.guyhouben.com_brut172_paasbox-8.jpg?v=1743166314&width=1600"
+      ]
+    },
+    {
+      "id": "product_024",
+      "vendorId": "vendor_018",
+      "category": "pickup",
+      "name": "ShakShuk Taste of the Bazaar",
+      "description": "Middle Eastern mezze and spiced mains for sharing.",
+      "pricePerPerson": {
+        "amount": 36.5
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "we",
+        "th",
+        "fr",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_2_van_60.jpg?v=1763997268&width=1600",
+        "https://eatsous.com/cdn/shop/files/140-SOUS_Shaksuk_24_van_60.jpg?v=1764000283&width=1600"
+      ]
+    },
+    {
+      "id": "product_025",
+      "vendorId": "vendor_019",
+      "category": "delivery",
+      "name": "Taste of Suriname Box",
+      "description": "Caribbean and Surinamese flavours in a luxury menubox.",
+      "pricePerPerson": {
+        "amount": 69.5
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "fr"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-Sinne_collab-1.jpg?v=1761085016&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-restaurantaandepoel_453485172_1051979679988276_8515185641573388160_n.jpg?v=1761084996&width=1600"
+      ]
+    },
+    {
+      "id": "product_026",
+      "vendorId": "vendor_020",
+      "category": "reservation",
+      "name": "Daalder Tasting Menu",
+      "description": "Amsterdam fine dining reservation with seasonal pairings.",
+      "pricePerPerson": {
+        "amount": 105
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 160,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/2023.11.01_Restaurant_Ster_-_Sous_039.jpg?v=1700142552&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-foto_sous_alle_gerechten.jpg?v=1768305869&width=1600"
+      ]
+    },
+    {
+      "id": "product_027",
+      "vendorId": "vendor_021",
+      "category": "pickup",
+      "name": "NonnaPepa Sunday Pasta",
+      "description": "Italian family-style pasta and antipasti for pickup.",
+      "pricePerPerson": {
+        "amount": 26
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "th",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/NENI_de2604eb-2cfa-4584-87ed-7227afbf26e8.webp?v=1761068722&width=1600",
+        "https://eatsous.com/cdn/shop/files/web_chillichans_arugulastudio-12_1688f9c4-2dd8-41ed-9daa-f1253ec0462e.jpg?v=1728382991&width=1600"
+      ]
+    },
+    {
+      "id": "product_028",
+      "vendorId": "vendor_022",
+      "category": "delivery",
+      "name": "Bolenius Dutch Vegetable Menu",
+      "description": "Plant-forward Dutch dining delivered chilled.",
+      "pricePerPerson": {
+        "amount": 68
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "th",
+        "fr",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/collections/177-Fris_06-03-2025_-232_b8c160bd-a239-4659-8c93-4fc93ffd9391.jpg?v=1761068553&width=1600",
+        "https://eatsous.com/cdn/shop/files/177-FRIS_Sous_8_april_voorgerecht_-_small_88e1a6af-0ab8-485d-9067-0ae56feb15e4.jpg?v=1775983470&width=1600"
+      ]
+    },
+    {
+      "id": "product_029",
+      "vendorId": "vendor_023",
+      "category": "pickup",
+      "name": "Chateaubriand Walking Dinner Box",
+      "description": "Traiteur-style bites for a roaming dinner at home.",
+      "pricePerPerson": {
+        "amount": 40
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "sa",
+        "su"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/20-18-2025-08-12_El_Puente.jpg?v=1761085862&width=1600",
+        "https://eatsous.com/cdn/shop/files/156-cb2.jpg?v=1761085570&width=1600"
+      ]
+    },
+    {
+      "id": "product_030",
+      "vendorId": "vendor_024",
+      "category": "delivery",
+      "name": "Raïnaraï Mezze Feast",
+      "description": "North African and Levantine sharing plates.",
+      "pricePerPerson": {
+        "amount": 32
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": true,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "fr",
+        "sa"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-CanalA---Lvffood.jpg?v=1761085380&width=1600",
+        "https://eatsous.com/cdn/shop/files/157-DSC09994_1_945f9100-dba9-4621-be4e-13e0df9ffa01.jpg?v=1743178581&width=1600"
+      ]
+    },
+    {
+      "id": "product_031",
+      "vendorId": "vendor_025",
+      "category": "pickup",
+      "name": "Schmidt Zeevis Seafood Platter",
+      "description": "Rotterdam seafood classics ready to plate.",
+      "pricePerPerson": {
+        "amount": 48
+      },
+      "currency": "EUR",
+      "pickupEnabled": true,
+      "deliveryEnabled": false,
+      "reservationEnabled": false,
+      "durationMinutes": null,
+      "availableDays": [
+        "mo",
+        "tu",
+        "we",
+        "th"
+      ],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/156-NZF_9546.jpg?v=1761085167&width=1600",
+        "https://eatsous.com/cdn/shop/files/195-Amuse_db1cc319-84ba-4159-a4a6-9c93547cb318.jpg?v=1773249449&width=1600"
+      ]
+    },
+    {
+      "id": "product_032",
+      "vendorId": "vendor_026",
+      "category": "reservation",
+      "name": "The Flavors Lab Private Dinner",
+      "description": "Experimental Asian fusion for small groups.",
+      "pricePerPerson": {
+        "amount": 95
+      },
+      "currency": "EUR",
+      "pickupEnabled": false,
+      "deliveryEnabled": false,
+      "reservationEnabled": true,
+      "durationMinutes": 120,
+      "availableDays": [],
+      "images": [
+        "https://eatsous.com/cdn/shop/files/7-Overzicht_0.jpg?v=1772192745&width=1600",
+        "https://eatsous.com/cdn/shop/files/65-65-P1450261.jpg?v=1763290727&width=1600"
+      ]
+    }
+  ],
+  "homepage": {
+    "vendorSpotlight": {
+      "locations": [
+        "Amsterdam Centrum",
+        "De Pijp",
+        "Jordaan · Elandsgracht en omstreken met een extra lange locatie voor ellipsis",
+        "Rotterdam Kop van Zuid"
+      ],
+      "blocks": [
+        {
+          "blockKey": "climbing",
+          "vendorOffset": 0
+        },
+        {
+          "blockKey": "bookTonight",
+          "vendorOffset": 4
+        },
+        {
+          "blockKey": "newOnPlatform",
+          "vendorOffset": 8
+        }
+      ]
+    }
+  }
+}

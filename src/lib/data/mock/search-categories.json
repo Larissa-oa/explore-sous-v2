@@ -1,0 +1,8 @@
+{
+  "ids": ["delivery", "reservations", "pickup"],
+  "categoryCardAssets": {
+    "delivery": "DELIVERY.jpg",
+    "reservations": "RESERVATIONS.jpg",
+    "pickup": "PICKUP.jpg"
+  }
+}
