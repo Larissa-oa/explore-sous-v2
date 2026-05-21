@@ -42,46 +42,53 @@ export type LocationPickerProps = {
   density?: "default" | "compact";
 };
 
+async function fetchPdokJson<T>(url: URL): Promise<T> {
+  const response = await fetch(url, { signal: AbortSignal.timeout(8_000) });
+  if (!response.ok) throw new Error(`PDOK ${response.status}`);
+  return response.json() as Promise<T>;
+}
+
 async function readCurrentLocationAddress(_locale: string, fallback: string): Promise<string> {
   const coords = await new Promise<{ lat: number; lng: number }>((resolve, reject) => {
     if (typeof navigator === "undefined" || !navigator.geolocation) {
-      reject();
+      reject(new Error("Geolocation unavailable"));
       return;
     }
     navigator.geolocation.getCurrentPosition(
       (p) => resolve({ lat: p.coords.latitude, lng: p.coords.longitude }),
-      () => reject(),
+      (err) => reject(err),
       { enableHighAccuracy: true, timeout: 12_000, maximumAge: 60_000 },
     );
   });
 
-  const reverseUrl = new URL("https://api.pdok.nl/bzk/locatieserver/search/v3_1/reverse");
-  reverseUrl.searchParams.set("lat", String(coords.lat));
-  reverseUrl.searchParams.set("lon", String(coords.lng));
-  reverseUrl.searchParams.set("rows", "1");
-  const reverse = (await fetch(reverseUrl).then((r) => r.json())) as {
-    response?: { docs?: { id?: string }[] };
-  };
-  const id = reverse.response?.docs?.[0]?.id;
-  if (id) {
-    const lookupUrl = new URL("https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup");
-    lookupUrl.searchParams.set("id", id);
-    const lookup = (await fetch(lookupUrl).then((r) => r.json())) as {
-      response?: { docs?: { postcode?: string; woonplaatsnaam?: string; weergavenaam?: string }[] };
-    };
-    const label = labelFromPdokDoc(lookup.response?.docs?.[0] ?? {});
-    if (label) return label;
-  }
+  try {
+    const reverseUrl = new URL("https://api.pdok.nl/bzk/locatieserver/search/v3_1/reverse");
+    reverseUrl.searchParams.set("lat", String(coords.lat));
+    reverseUrl.searchParams.set("lon", String(coords.lng));
+    reverseUrl.searchParams.set("rows", "1");
+    const reverse = await fetchPdokJson<{ response?: { docs?: { id?: string }[] } }>(reverseUrl);
+    const id = reverse.response?.docs?.[0]?.id;
 
-  const postcodeUrl = new URL("https://api.pdok.nl/bzk/locatieserver/search/v3_1/free");
-  postcodeUrl.searchParams.set("q", `${coords.lat},${coords.lng}`);
-  postcodeUrl.searchParams.set("fq", "type:postcode");
-  postcodeUrl.searchParams.set("rows", "1");
-  const near = (await fetch(postcodeUrl).then((r) => r.json())) as {
-    response?: { docs?: { postcode?: string; woonplaatsnaam?: string }[] };
-  };
-  const nearLabel = labelFromPdokDoc(near.response?.docs?.[0] ?? {});
-  if (nearLabel) return nearLabel;
+    if (id) {
+      const lookupUrl = new URL("https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup");
+      lookupUrl.searchParams.set("id", id);
+      const lookup = await fetchPdokJson<{
+        response?: { docs?: { postcode?: string; woonplaatsnaam?: string; weergavenaam?: string }[] };
+      }>(lookupUrl);
+      const label = labelFromPdokDoc(lookup.response?.docs?.[0] ?? {});
+      if (label) return label;
+    }
+
+    const postcodeUrl = new URL("https://api.pdok.nl/bzk/locatieserver/search/v3_1/free");
+    postcodeUrl.searchParams.set("q", `${coords.lat},${coords.lng}`);
+    postcodeUrl.searchParams.set("fq", "type:postcode");
+    postcodeUrl.searchParams.set("rows", "1");
+    const near = await fetchPdokJson<{ response?: { docs?: { postcode?: string; woonplaatsnaam?: string }[] } }>(postcodeUrl);
+    const nearLabel = labelFromPdokDoc(near.response?.docs?.[0] ?? {});
+    if (nearLabel) return nearLabel;
+  } catch {
+    // PDOK API unavailable or returned an error — fall through to the fallback label
+  }
 
   return fallback;
 }

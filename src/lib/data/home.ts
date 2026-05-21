@@ -2,6 +2,10 @@ import homeCatalogJson from "@/lib/data/mock/home-catalog.json";
 import type { CatalogVendor, HomeCatalog } from "@/types/catalog";
 import type { PartnerListing, VendorSpotlightBlock } from "@/types/home";
 
+// Trust cast: safe for mock JSON because the file is authored by us and matches HomeCatalog exactly.
+// When switching to a real API, replace this with a Zod schema parse so malformed responses
+// surface as clear errors instead of silent runtime failures.
+// Example: import { HomeCatalogSchema } from "@/lib/schemas/catalog"; HomeCatalogSchema.parse(apiData)
 const homeCatalog = homeCatalogJson as HomeCatalog;
 
 export function getHomeCatalog(): HomeCatalog {
