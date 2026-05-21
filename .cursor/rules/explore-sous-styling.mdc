@@ -12,7 +12,7 @@ Single source of tokens: **`src/app/globals.css`** (`@import "tailwindcss"`, `:r
 
 - Prefer **utility classes**; avoid inline styles for color, spacing, radius, and typography.
 - Use **semantic theme utilities** first: `bg-background`, `text-foreground`, `bg-primary`, `text-muted-foreground`, `border-border`, etc.
-- Reach for **palette utilities** only when semantic tokens do not fit: `bg-ds-peach-600`, `text-ds-blue-900`, `bg-ds-clay-100`.
+- Reach for **palette utilities** only when semantic tokens do not fit: `bg-ds-peach-600`, `text-ds-blue-900`, `bg-ds-blue-600`, `bg-ds-clay-100`.
 - Merge conditional classes with **`cn()`** from **`@/lib/utils`**; forwarded components should accept **`className`** and merge last.
 
 ```tsx
@@ -27,7 +27,10 @@ import { cn } from "@/lib/utils";
 />;
 ```
 
-- **Variants (optional):** for many visual states, use **`class-variance-authority`** (`cva`) + `cn`; add the dependency when the first variant-heavy primitive needs it.
+## 1b. shadcn / Radix primitives
+
+- UI building blocks live in **`src/components/ui/`** (installed with **`npx shadcn@latest add <name>`**). Treat them as **owned source**: adjust with **`cn()`**, Framer tokens (`rounded-ds-*`, `type-h*-*`), and semantic colours—avoid parallel one-off components that duplicate the same behaviour.
+- **Variants:** shadcn `button` and similar use **`class-variance-authority`** already; extend variants there instead of new wrapper components unless the UX diverges clearly.
 
 ## 2. Colour system (Framer → CSS → Tailwind)
 
@@ -38,13 +41,14 @@ Semantic mapping in `@theme inline` (use these first):
 | Page surface | `bg-background`, `text-foreground` |
 | Primary CTA / links accent | `bg-primary`, `text-primary-foreground`, hover `hover:bg-primary-hover` |
 | Secondary / supporting text | `text-muted-foreground`, surfaces `bg-muted` |
+| Hover surface (lists, fields, calendar cells) | `hover:bg-interactive-hover` (token: `--interactive-hover`) |
 | Cards | `bg-card`, `text-card-foreground` |
 | Borders / inputs outline | `border-border`, `border-input` |
 | Focus ring | `ring-ring` (pair with `focus-visible:ring-2`) |
 | Success / warning (badges, alerts) | `text-success`, `bg-success-muted`, `text-warning`, `bg-warning-muted` |
 | Destructive | `bg-destructive`, `text-destructive-foreground` |
 
-**Raw palette** (`bg-ds-*`, `text-ds-*`): `ds-blue-900`, `ds-peach-{50,100,600,800,900}`, `ds-green-{50,100,600,800,900}`, `ds-yellow-{50,100,600,800,900}`, `ds-clay-{50,100,200,600,800,900}`. **Alpha overlays:** use CSS vars in arbitrary values, e.g. `bg-[var(--ds-alpha-black-8)]`, until exposed as theme colors if needed.
+**Raw palette** (`bg-ds-*`, `text-ds-*`): `ds-blue-{600,900}`, `ds-peach-{50,100,600,800,900}`, `ds-green-{50,100,600,800,900}`, `ds-yellow-{50,100,600,800,900}`, `ds-clay-{50,100,200,600,800,900}`. **Alpha overlays:** use CSS vars in arbitrary values, e.g. `bg-[var(--ds-alpha-black-8)]`, until exposed as theme colors if needed.
 
 **Do not** paste one-off hex colours in JSX—add or reuse a token in `globals.css` first.
 
@@ -60,6 +64,8 @@ Framer names: **H1 Semibold** … **H6 Medium**. In code use **`@utility`** clas
 | `type-h2-sb` | H2 Semibold |
 | `type-h2-md` | H2 Medium |
 | `type-h3-sb` … `type-h6-md` | H3–H6 Semibold / Medium |
+| `type-body-md` | Body Medium (16px / medium) |
+| `type-body-sm-sb` | Body Small Semibold (14px / semibold) |
 
 Body copy: default document styles use **`font-sans`** (**Inter** via `next/font`, variable `--font-inter`). OpenType flags live in **`--inter-features`** in `globals.css` (Framer parity). Use **`font-mono`** (Geist Mono) only for code.
 
@@ -77,7 +83,10 @@ Framer spacing system: **base unit 4px**. Prefer Tailwind spacing scale **`p-*`,
 | radius-12 | `rounded-ds-12` | Dropdowns, tooltips, panels |
 | radius-16 | `rounded-ds-16` | Modals, bottom sheets |
 | radius-20 | `rounded-ds-20` | Feature cards, hero surfaces |
+| radius-24 | `rounded-ds-24` | Large mobile surfaces (e.g. search bar) |
 | radius-full | `rounded-ds-full` | Pills, chips |
+
+**Homepage search (outer radius − 2px for hovers):** `--search-control-inner-radius` and `--search-field-hover-radius` live in **`globals.css`** with utilities **`rounded-search-inner`** and **`rounded-search-field-hover`**. Mark the bar with **`data-search-field-surface`**; mark mobile picker sheets with **`data-search-dropdown="sheet"`** so inner radii track popover (`ds-12`) vs sheet (`ds-16`).
 
 ## 6. Buttons (Framer system)
 
@@ -103,7 +112,8 @@ States in Framer: **Default**, **Filled**, **Default • Mobile**, **Filled** (m
 Framer examples: section header vs open header, optional footer, primary action. Standards:
 
 - **Surface:** `rounded-ds-16`, `bg-card`, `text-card-foreground`, `border-border`, sensible **`p-6`** or token-based padding.
-- **Backdrop:** alpha black tokens, e.g. `bg-[var(--ds-alpha-black-50)]`.
+- **Backdrop:** `DialogContent` / `SheetContent` default to full scrim (`scrimAboveNavbar`, tokens in `@/lib/modal-overlay`). Use `modalOverlayScrimClass` / `modalPanelScrimClass` only inside primitives — not at feature call sites.
+- **Opt-out:** explore mega menu sheet only — `scrimAboveNavbar={false}` and `overlayClassName="top-[var(--site-navbar-height)]"`.
 - **Focus:** trap focus and restore on close (library or manual); first focusable element receives focus on open.
 
 ## 9. Cards, lists, tables
@@ -124,7 +134,7 @@ Until tokens are added to `globals.css`, use Tailwind **`shadow-sm` / `shadow-md
 
 ## 12. Dark mode
 
-Today: **`prefers-color-scheme`** adjusts `:root` **background / foreground / card** in `globals.css`. If the product later ships **class-based** dark mode (e.g. `.dark` on `<html>`), add matching **`dark:`** utilities and optional `@custom-variant`—then test both schemes for every new surface.
+The site **stays on the light `:root` tokens** (no `prefers-color-scheme` flip in `globals.css`). **`html { color-scheme: light; }`** matches native UI to that theme. Optional **`.dark`** on `<html>` later would need explicit **`dark:`** utilities.
 
 ## 13. Responsive behaviour
 
@@ -152,9 +162,12 @@ Today: **`prefers-color-scheme`** adjusts `:root` **background / foreground / ca
 
 ## 17. File layout (this repo)
 
-- **Global CSS & tokens:** `src/app/globals.css`
+- **Global CSS & tokens:** `src/app/globals.css` (includes `@import "tw-animate-css"` and `@import "shadcn/tailwind.css"`).
 - **`cn()`:** `src/lib/utils.ts`
-- **UI primitives / compounds:** `src/components/ui/` (and feature-specific pieces under `src/features/…`)
+- **shadcn primitives:** `src/components/ui/`
+- **Layout-only building blocks (e.g. carousels):** `src/components/` when shared across features
+- **Listing rails / horizontal sliders:** do not show prev/next arrow controls below the `sm` breakpoint; rely on swipe/scroll on mobile (`max-sm:hidden` on the nav cluster in `listingRailHeaderClassNames`).
+- **Homepage composition:** `src/features/homepage/`
 
 ## 18. When Framer changes
 

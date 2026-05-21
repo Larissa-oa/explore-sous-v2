@@ -1,0 +1,91 @@
+/* Discovery + vendor Leaflet maps — all Leaflet-specific overrides live here. */
+
+.discovery-map-root .leaflet-container {
+  isolation: isolate;
+  height: 100%;
+  width: 100%;
+  background: #f5f5f4;
+}
+
+/* Show tiles at full opacity immediately (no staggered fade-in). */
+.discovery-map-root .leaflet-tile,
+.discovery-map-root .leaflet-fade-anim .leaflet-tile {
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+.discovery-map-root .leaflet-control-attribution {
+  font-size: 10px;
+  color: #78716c;
+}
+
+/* divIcon pins */
+.leaflet-discovery-pin {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Search-centre tooltip */
+.leaflet-discovery-tt.leaflet-tooltip {
+  background: #fafaf9 !important;
+  color: #292524 !important;
+  border: 1px solid #e7e5e4 !important;
+  border-radius: var(--ds-radius-8) !important;
+  box-shadow: 0 2px 8px rgba(28, 25, 23, 0.08) !important;
+  padding: 4px 8px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+}
+
+.leaflet-discovery-tt.leaflet-tooltip-top::before {
+  border-top-color: #fafaf9 !important;
+}
+
+/* Vendor popup card */
+.leaflet-discovery-popup .leaflet-popup-content-wrapper {
+  border-radius: var(--ds-radius-12);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px var(--ds-alpha-black-8);
+}
+
+.leaflet-discovery-popup .leaflet-popup-content {
+  margin: 0;
+  width: 280px !important;
+  min-width: 0;
+  line-height: 1;
+}
+
+.leaflet-discovery-popup .leaflet-popup-content > * {
+  margin: 0;
+}
+
+.leaflet-discovery-popup .discovery-map-popup-card,
+.leaflet-discovery-popup .discovery-map-popup-card * {
+  box-sizing: border-box;
+}
+
+.leaflet-discovery-popup .leaflet-popup-tip {
+  border-top-color: var(--card) !important;
+}
+
+.leaflet-discovery-popup a.leaflet-popup-close-button {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  padding: 0 !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  border-radius: var(--ds-radius-full) !important;
+  background: var(--ds-alpha-black-50) !important;
+  color: #fff !important;
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+  text-align: center !important;
+}
+
+.leaflet-discovery-popup a.leaflet-popup-close-button:hover {
+  background: var(--ds-alpha-black-55) !important;
+  color: #fff !important;
+}

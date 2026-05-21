@@ -1,17 +1,277 @@
 {
+  "SiteFooter": {
+    "logoAlt": "SOUS",
+    "description": "We brengen chefs en klanten samen door food en beverage ondernemers te ondersteunen en jou te helpen écht goed eten te ontdekken.",
+    "socialAria": "SOUS op social media",
+    "copyright": "© {year}, SOUS",
+    "legalNavAria": "Juridisch",
+    "language": {
+      "aria": "Taal",
+      "title": "Taal",
+      "options": {
+        "nl": "Nederlands",
+        "en": "English"
+      }
+    },
+    "columns": {
+      "explore": {
+        "title": "Explore SOUS",
+        "links": {
+          "newOnSous": "Nieuw op SOUS",
+          "bookTonight": "Boek voor vanavond",
+          "trending": "Trending",
+          "featuredPartners": "Uitgelichte partners"
+        }
+      },
+      "more": {
+        "title": "Aanbod",
+        "links": {
+          "search": "Zoeken",
+          "termsOfService": "Algemene voorwaarden",
+          "getPoweredBy": "Word aangedreven door SOUS"
+        }
+      }
+    },
+    "legal": {
+      "privacyPolicy": "Privacybeleid",
+      "termsOfService": "Algemene voorwaarden",
+      "contactInformation": "Contactgegevens",
+      "legalNotice": "Juridische kennisgeving"
+    }
+  },
+  "SiteNavbar": {
+    "logoLinkAria": "SOUS startpagina",
+    "mainNavAria": "Hoofdnavigatie",
+    "mobileMenuAria": "Menu openen",
+    "mobileMenuCloseAria": "Menu sluiten",
+    "mobileMenuTitle": "Menu",
+    "explore": {
+      "trigger": "Ontdekken",
+      "megaMenuTitle": "Ontdekken",
+      "megaMenuDescription": "Kies hoe je SOUS wilt beleven.",
+      "categoriesSectionLabel": "Explore SOUS",
+      "howItWorks": "Hoe het werkt",
+      "seeAllCardSubtitle": "Ontdek bezorgen, afhalen, reserveringen en meer.",
+      "trendingNow": "Trending nu",
+      "seeAll": "Alles bekijken",
+      "delivery": "Bezorgen",
+      "reservations": "Reserveringen",
+      "pickup": "Afhalen"
+    },
+    "searchPlaceholder": "Zoeken",
+    "search": {
+      "placeholder": "Zoek restaurants op naam of keuken",
+      "close": "Zoeken sluiten",
+      "popularTitle": "Populaire zoekopdrachten",
+      "featured": "Uitgelicht Restaurants",
+      "searchFor": "Zoeken naar “{query}”",
+      "popular": {
+        "italian": "Italiaans",
+        "asian": "Aziatisch",
+        "dateNight": "Date night",
+        "sharedDining": "Shared dining",
+        "fineDining": "Fine dining",
+        "trending": "Nu trending"
+      }
+    },
+    "restaurants": "Restaurants",
+    "poweredBy": "Word aangedreven door SOUS",
+    "login": "Inloggen",
+    "searchAria": "Zoeken",
+    "wishlistAria": "Verlanglijst"
+  },
   "LocaleLayout": {
-    "title": "Explore Sous",
-    "description": "Explore Sous — frontend en talen."
+    "title": "Explore SOUS",
+    "description": "Ontdek culinaire ervaringen bij jou in de buurt."
+  },
+  "Discovery": {
+    "metaTitle": "Ontdekken",
+    "metaDescription": "Blader door restaurants en ervaringen op locatie.",
+    "mapTitle": "Kaart zoekgebied",
+    "mapActivate": "Activeer de kaart om te slepen en in te zoomen",
+    "mapUserPin": "Jouw zoekgebied",
+    "mapUserPinNamed": "{label} — jouw zoekgebied",
+    "mapUserPinHint": "Resultaten zijn gecentreerd op dit punt wanneer je een locatie instelt.",
+    "summary": "{count} locaties op basis van je zoekopdracht",
+    "searchResults": {
+      "title": "Resultaten voor “{query}”",
+      "count": "{count, plural, one {# chef of restaurant} other {# chefs en restaurants}}",
+      "empty": "Geen chefs of restaurants gevonden voor “{query}”. Probeer een andere spelling of wis je zoekterm.",
+      "metaTitle": "{query} · Ontdekken"
+    },
+    "noResultsFilters": "Helaas zijn er geen plekken beschikbaar met deze filters. Probeer een andere datum of pas je filters aan.",
+    "invalidHint": "Deze zoeklink is ongeldig. Begin opnieuw vanaf de startpagina.",
+    "browseHome": "Terug naar home",
+    "orderCta": "Bestel nu",
+    "mobileMap": {
+      "exploreMap": "Kaart verkennen",
+      "dialogAria": "Kaart en locaties voor je zoekopdracht",
+      "closeAria": "Kaart sluiten",
+      "railHint": "Verschuif of zoom de kaart om alleen zichtbare locaties te tonen.",
+      "railAllInSearch": "{count} plekken voldoen aan je filters",
+      "railOnMap": "{count} in dit kaartbeeld",
+      "railEmpty": "Geen locaties in dit kaartgebied — probeer de kaart te verschuiven."
+    },
+    "header": {
+      "categoryAll": "Alles",
+      "dateLabel": "Datum",
+      "datePlaceholder": "Kies datum",
+      "clearDate": "Alle datums",
+      "deliveryAreaLabel": "Amsterdam en omgeving",
+      "locationPlaceholder": "Kies locatie",
+      "applyLocation": "Locatie toepassen",
+      "cuisineLabel": "Keuken",
+      "cuisinePlaceholder": "Keuken",
+      "cuisineCount": "Keuken · {count}",
+      "moreLabel": "Meer filters",
+      "morePlaceholder": "Meer filters",
+      "moreCount": "Meer filters · {count}",
+      "clearFilters": "Filters wissen",
+      "applyFilters": "Filters toepassen",
+      "cuisineModalTitle": "Keukentype",
+      "moreModalTitle": "Meer filters",
+      "sectionCuisine": "Keukentype",
+      "sectionPrice": "Prijs",
+      "sectionTags": "Tags",
+      "sectionPromo": "Promo",
+      "priceTierAria": "Prijsniveau {level} van 4",
+      "promoTrending": "Nu trending",
+      "promoNew": "Nieuw op SOUS"
+    }
   },
   "HomePage": {
-    "heading": "Begin met bewerken van het page-bestand.",
-    "introLead": "Zoek je een startpunt of meer uitleg? Ga naar",
-    "introBetween": "of het",
-    "introTail": "centrum.",
-    "templates": "Templates",
-    "learning": "Learning",
-    "deploy": "Nu publiceren",
-    "documentation": "Documentatie"
+    "hero": {
+      "titleLine1": "Vind je volgende",
+      "titleLine2": "Culinaire ervaring",
+      "subtitle": "Begin met je favorieten. Blijf voor wat daarna komt.",
+      "imageAlt": "Decoratieve foodfotografie",
+      "exploreSous": "Ontdek SOUS",
+      "trustTitle": "500+ culinaire ervaringen",
+      "trustSubtitle": "Geselecteerd door chefs en foodexperts",
+      "trustAvatar1Alt": "Portret van een foodexpert",
+      "trustAvatar2Alt": "Portret van een chef",
+      "trustAvatar3Alt": "Portret van een curator"
+    },
+    "search": {
+      "categoryLabel": "Categorie",
+      "categoryPlaceholder": "Kies categorie",
+      "whenLabel": "Wanneer",
+      "whenPlaceholder": "Datum",
+      "locationLabel": "Waar",
+      "locationPlaceholder": "Locatie",
+      "deliveryAreaShort": "Amsterdam en omgeving",
+      "explore": "Ontdekken",
+      "calendar": {
+        "selectDate": "Datum kiezen",
+        "prevMonth": "Vorige maand",
+        "nextMonth": "Volgende maand",
+        "weekdaysShort": {
+          "su": "zo",
+          "mo": "ma",
+          "tu": "di",
+          "we": "wo",
+          "th": "do",
+          "fr": "vr",
+          "sa": "za"
+        }
+      },
+      "locationPicker": {
+        "title": "Waar",
+        "clear": "Wissen",
+        "close": "Sluiten",
+        "placeholder": "Postcode of stad",
+        "useCurrentLocation": "Gebruik huidige locatie",
+        "locating": "Locatie ophalen…",
+        "currentLocationResult": "Bij jou in de buurt"
+      },
+      "categories": {
+        "all": "Alles",
+        "delivery": "Bezorgen",
+        "reservations": "Reserveringen",
+        "pickup": "Afhalen"
+      }
+    },
+    "vendorSpotlight": {
+      "regionAria": "Trending en uitgelichte restaurants",
+      "seeAll": "Alles bekijken",
+      "favorite": "Restaurant bewaren",
+      "blocks": {
+        "climbing": "Trending",
+        "bookTonight": "Boek voor vanavond",
+        "newOnPlatform": "Nieuw op SOUS"
+      }
+    },
+    "trending": {
+      "badges": {
+        "trendingNow": "Nu trending",
+        "newOnSous": "Nieuw bij SOUS",
+        "editorsPick": "Keuze van de redactie",
+        "seasonalHighlight": "Seizoenshighlight",
+        "limitedTime": "Beperkte tijd",
+        "guestFavorite": "Favoriet van gasten",
+        "staffPick": "Keuze van het team",
+        "topRated": "Hoogst beoordeeld",
+        "dateNight": "Date night",
+        "chefSpotlight": "Chef in de spotlight"
+      }
+    },
+    "listingRail": {
+      "prev": "Vorige",
+      "next": "Volgende",
+      "region": "Carrousel"
+    },
+    "listingCard": {
+      "priceFrom": "Vanaf"
+    },
+    "partners": {
+      "title": "Uitgelichte partners",
+      "description": "Geselecteerde restaurants en chefs bij jou in de buurt."
+    },
+    "delivery": {
+      "title": "Jouw favorieten, bij jou thuisbezorgd",
+      "description": "Chef-maaltijdboxen, gerechten om warm te eten en meer—tot aan je deur."
+    },
+    "pickup": {
+      "title": "Afhalen bij restaurants bij jou in de buurt",
+      "description": "Bestel vooraf en haal chef-gemaakte gerechten op wanneer het jou uitkomt."
+    },
+    "cta": {
+      "title": "Zin om te ontdekken?<br></br>Zo werkt het",
+      "body": "We brengen chefs en gasten samen door food- en horeca-ondernemers te ondersteunen en jou te helpen echt goed eten te ontdekken.",
+      "button": "Meer weten",
+      "imageAlt": "Productfotografie van SOUS"
+    }
+  },
+  "ImageGalleryModal": {
+    "close": "Sluiten",
+    "backToGrid": "Terug naar overzicht",
+    "previousPhoto": "Vorige foto",
+    "nextPhoto": "Volgende foto",
+    "detailProgress": "Foto {current} van {total}"
+  },
+  "VendorPage": {
+    "gallery": {
+      "regionAria": "Foto's van de locatie",
+      "viewAll": "Alle foto's",
+      "imageAlt": "{name}, foto {index}"
+    },
+    "info": {
+      "readMore": "Lees meer",
+      "readLess": "Lees minder",
+      "share": "Delen",
+      "shareCopied": "Link gekopieerd naar klembord",
+      "bookNow": "Boek nu",
+      "bookNowNewWindow": "Opent in een nieuw tabblad",
+      "pickup": "Afhalen",
+      "cuisineAria": "Keuken"
+    },
+    "location": {
+      "regionAria": "Locatie en contact",
+      "mapTitle": "Kaart — {name}",
+      "locationColumn": "Locatie",
+      "getDirections": "Routebeschrijving",
+      "contactColumn": "Contact"
+    }
   },
   "NotFoundPage": {
     "title": "Pagina niet gevonden"

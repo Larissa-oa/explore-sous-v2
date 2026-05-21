@@ -1,17 +1,277 @@
 {
+  "SiteFooter": {
+    "logoAlt": "SOUS",
+    "description": "We bring chefs and customers together by supporting food and beverage entrepreneurs and helping you discover truly great food.",
+    "socialAria": "SOUS on social media",
+    "copyright": "© {year}, SOUS",
+    "legalNavAria": "Legal",
+    "language": {
+      "aria": "Language",
+      "title": "Language",
+      "options": {
+        "nl": "Nederlands",
+        "en": "English"
+      }
+    },
+    "columns": {
+      "explore": {
+        "title": "Explore SOUS",
+        "links": {
+          "newOnSous": "New on SOUS",
+          "bookTonight": "Book Tonight",
+          "trending": "Trending",
+          "featuredPartners": "Featured Partners"
+        }
+      },
+      "more": {
+        "title": "More",
+        "links": {
+          "search": "Search",
+          "termsOfService": "Terms of Service",
+          "getPoweredBy": "Get Powered by SOUS"
+        }
+      }
+    },
+    "legal": {
+      "privacyPolicy": "Privacy policy",
+      "termsOfService": "Terms of service",
+      "contactInformation": "Contact information",
+      "legalNotice": "Legal notice"
+    }
+  },
+  "SiteNavbar": {
+    "logoLinkAria": "SOUS home",
+    "mainNavAria": "Main",
+    "mobileMenuAria": "Open menu",
+    "mobileMenuCloseAria": "Close menu",
+    "mobileMenuTitle": "Menu",
+    "explore": {
+      "trigger": "Explore",
+      "megaMenuTitle": "Explore",
+      "megaMenuDescription": "Choose a way to experience SOUS.",
+      "categoriesSectionLabel": "Explore SOUS",
+      "howItWorks": "How it works",
+      "seeAllCardSubtitle": "Browse delivery, pickup, reservations, and more.",
+      "trendingNow": "Trending now",
+      "seeAll": "See all",
+      "delivery": "Delivery",
+      "reservations": "Reservations",
+      "pickup": "Pickup"
+    },
+    "searchPlaceholder": "Search",
+    "search": {
+      "placeholder": "Search restaurants by name or cuisine",
+      "close": "Close search",
+      "popularTitle": "Popular searches",
+      "featured": "Featured Restaurants",
+      "searchFor": "Search for “{query}”",
+      "popular": {
+        "italian": "Italian",
+        "asian": "Asian",
+        "dateNight": "Date night",
+        "sharedDining": "Shared dining",
+        "fineDining": "Fine dining",
+        "trending": "Trending now"
+      }
+    },
+    "restaurants": "Restaurants",
+    "poweredBy": "Get Powered by SOUS",
+    "login": "Login",
+    "searchAria": "Search",
+    "wishlistAria": "Wishlist"
+  },
   "LocaleLayout": {
-    "title": "Explore Sous",
-    "description": "Explore Sous — frontend and locales."
+    "title": "Explore SOUS",
+    "description": "Discover culinary experiences near you."
+  },
+  "Discovery": {
+    "metaTitle": "Discover",
+    "metaDescription": "Browse restaurants and experiences by location.",
+    "mapTitle": "Search area map",
+    "mapActivate": "Activate map to pan and zoom",
+    "mapUserPin": "Your search area",
+    "mapUserPinNamed": "{label} — your search",
+    "mapUserPinHint": "Results are centred on this point when you set a location.",
+    "summary": "Showing {count} locations based on your search",
+    "searchResults": {
+      "title": "Results for “{query}”",
+      "count": "{count, plural, one {# chef or restaurant} other {# chefs and restaurants}}",
+      "empty": "No chefs or restaurants match “{query}”. Try another spelling or clear your search.",
+      "metaTitle": "{query} · Discover"
+    },
+    "noResultsFilters": "Unfortunately, there are no places available for these filters. Try another date or adjust your filters.",
+    "invalidHint": "This search link is invalid. Start again from the home page.",
+    "browseHome": "Back to home",
+    "orderCta": "Order now",
+    "mobileMap": {
+      "exploreMap": "Explore map",
+      "dialogAria": "Map and venues for your search",
+      "closeAria": "Close map",
+      "railHint": "Pan or zoom the map to list only what is visible on the map.",
+      "railAllInSearch": "{count} places match your filters",
+      "railOnMap": "{count} in this map view",
+      "railEmpty": "No venues in this map area — try panning the map."
+    },
+    "header": {
+      "categoryAll": "All",
+      "dateLabel": "Date",
+      "datePlaceholder": "Select date",
+      "clearDate": "Any date",
+      "deliveryAreaLabel": "Amsterdam area",
+      "locationPlaceholder": "Choose location",
+      "applyLocation": "Apply location",
+      "cuisineLabel": "Cuisine",
+      "cuisinePlaceholder": "Cuisine",
+      "cuisineCount": "Cuisine · {count}",
+      "moreLabel": "More filters",
+      "morePlaceholder": "More filters",
+      "moreCount": "More filters · {count}",
+      "clearFilters": "Clear filters",
+      "applyFilters": "Apply filters",
+      "cuisineModalTitle": "Cuisine type",
+      "moreModalTitle": "More filters",
+      "sectionCuisine": "Cuisine type",
+      "sectionPrice": "Price",
+      "sectionTags": "Tags",
+      "sectionPromo": "Promo",
+      "priceTierAria": "Price tier {level} of 4",
+      "promoTrending": "Trending now",
+      "promoNew": "New on SOUS"
+    }
   },
   "HomePage": {
-    "heading": "To get started, edit the page file.",
-    "introLead": "Looking for a starting point or more instructions? Head over to",
-    "introBetween": "or the",
-    "introTail": "center.",
-    "templates": "Templates",
-    "learning": "Learning",
-    "deploy": "Deploy Now",
-    "documentation": "Documentation"
+    "hero": {
+      "titleLine1": "Find your next",
+      "titleLine2": "Culinary Experience",
+      "subtitle": "Start with your favorites. Stay for what's next.",
+      "imageAlt": "Decorative food photography",
+      "exploreSous": "Explore SOUS",
+      "trustTitle": "500+ culinary experiences",
+      "trustSubtitle": "Selected by chefs and food experts",
+      "trustAvatar1Alt": "Portrait of a food expert",
+      "trustAvatar2Alt": "Portrait of a chef",
+      "trustAvatar3Alt": "Portrait of a curator"
+    },
+    "search": {
+      "categoryLabel": "Category",
+      "categoryPlaceholder": "Choose category",
+      "whenLabel": "When",
+      "whenPlaceholder": "Date",
+      "locationLabel": "Where",
+      "locationPlaceholder": "Location",
+      "deliveryAreaShort": "Amsterdam area",
+      "explore": "Explore",
+      "calendar": {
+        "selectDate": "Select date",
+        "prevMonth": "Previous month",
+        "nextMonth": "Next month",
+        "weekdaysShort": {
+          "su": "Su",
+          "mo": "Mo",
+          "tu": "Tu",
+          "we": "We",
+          "th": "Th",
+          "fr": "Fr",
+          "sa": "Sa"
+        }
+      },
+      "locationPicker": {
+        "title": "Where",
+        "clear": "Clear",
+        "close": "Close",
+        "placeholder": "Postal code or city",
+        "useCurrentLocation": "Use current location",
+        "locating": "Finding your location…",
+        "currentLocationResult": "Near you"
+      },
+      "categories": {
+        "all": "All",
+        "delivery": "Delivery",
+        "reservations": "Reservations",
+        "pickup": "Pickup"
+      }
+    },
+    "vendorSpotlight": {
+      "regionAria": "Trending and featured restaurants",
+      "seeAll": "See all",
+      "favorite": "Save restaurant",
+      "blocks": {
+        "climbing": "Trending",
+        "bookTonight": "Book tonight",
+        "newOnPlatform": "New on SOUS"
+      }
+    },
+    "trending": {
+      "badges": {
+        "trendingNow": "Trending now",
+        "newOnSous": "New at SOUS",
+        "editorsPick": "Editor’s pick",
+        "seasonalHighlight": "Seasonal highlight",
+        "limitedTime": "Limited time",
+        "guestFavorite": "Guest favourite",
+        "staffPick": "Staff pick",
+        "topRated": "Top rated",
+        "dateNight": "Date night",
+        "chefSpotlight": "Chef spotlight"
+      }
+    },
+    "listingRail": {
+      "prev": "Previous",
+      "next": "Next",
+      "region": "Carousel"
+    },
+    "listingCard": {
+      "priceFrom": "From"
+    },
+    "partners": {
+      "title": "Featured partners",
+      "description": "Hand-picked restaurants and chefs near you."
+    },
+    "delivery": {
+      "title": "Your favorites, delivered to you",
+      "description": "Chef-made meal kits, ready-to-eat dishes, and more—brought to your door."
+    },
+    "pickup": {
+      "title": "Pickup from restaurants near you",
+      "description": "Order ahead and collect chef-prepared dishes when it suits you."
+    },
+    "cta": {
+      "title": "Start exploring?<br></br>Here's how it works",
+      "body": "We bring chefs and customers together by supporting food and beverage entrepreneurs and helping you discover truly great food.",
+      "button": "Click me",
+      "imageAlt": "SOUS product photography"
+    }
+  },
+  "ImageGalleryModal": {
+    "close": "Close",
+    "backToGrid": "Back to photos",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "detailProgress": "Photo {current} of {total}"
+  },
+  "VendorPage": {
+    "gallery": {
+      "regionAria": "Venue photos",
+      "viewAll": "View all photos",
+      "imageAlt": "{name}, photo {index}"
+    },
+    "info": {
+      "readMore": "Read more",
+      "readLess": "Read less",
+      "share": "Share",
+      "shareCopied": "Link copied to clipboard",
+      "bookNow": "Book now",
+      "bookNowNewWindow": "Opens in a new tab",
+      "pickup": "Pickup",
+      "cuisineAria": "Cuisine"
+    },
+    "location": {
+      "regionAria": "Location and contact",
+      "mapTitle": "Map — {name}",
+      "locationColumn": "Location",
+      "getDirections": "Get directions",
+      "contactColumn": "Contact"
+    }
   },
   "NotFoundPage": {
     "title": "Page not found"

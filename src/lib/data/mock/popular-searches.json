@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "id": "italian", "patch": { "cuisines": ["Italian"] } },
+    { "id": "asian", "patch": { "cuisines": ["Asian"] } },
+    { "id": "fineDining", "patch": { "tags": ["Fine Dining"] } }
+  ]
+}
