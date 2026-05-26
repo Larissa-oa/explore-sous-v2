@@ -1,6 +1,6 @@
 "use client";
 
-import type { Dispatch, ReactNode, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import {
   CalendarBlankIcon,
   CaretDownIcon,
@@ -20,21 +20,15 @@ import type { DiscoveryCategoryId } from "@/types/search";
 import { cn } from "@/lib/utils";
 
 import {
-  DiscoveryHeaderCategoryIcon as SearchCategoryOptionIcon,
   DiscoveryHeaderCheckboxRow as CheckboxRow,
   DiscoveryHeaderFieldTrigger as FieldTrigger,
   DiscoveryHeaderFilterModalShell as FilterModalShell,
   DiscoveryHeaderModalFooter as ModalFooter,
+  DiscoverySearchCategoryOptionList,
   discoveryPillActiveClass as PILL_ACTIVE,
   discoveryPillBaseClass as PILL_BASE,
-  discoverySearchOptionIdle as searchOptionIdle,
-  discoverySearchOptionList as searchOptionList,
-  discoverySearchOptionRow as searchOptionRow,
-  discoverySearchOptionSelected as searchOptionSelected,
 } from "./discovery-header-primitives";
 import { useDiscoveryHeaderState, type DiscoveryPageHeaderProps } from "./use-discovery-header";
-
-export type { DiscoveryPageHeaderProps } from "./use-discovery-header";
 
 // —— More filters panel body ————————————————————————————————————————————————
 
@@ -184,6 +178,7 @@ export function DiscoveryPageHeader(props: DiscoveryPageHeaderProps) {
     draftTags, setDraftTags,
     draftPromos, setDraftPromos,
     categoryOptions,
+    locationPickerLabels,
     categoryDisplay,
     dateValue,
     dateDisplay,
@@ -203,28 +198,14 @@ export function DiscoveryPageHeader(props: DiscoveryPageHeaderProps) {
   } = useDiscoveryHeaderState(props);
 
   const categoryPanel = (
-    <ul className={cn(searchOptionList, "flex flex-col gap-1")} role="listbox">
-      {categoryOptions.map((opt) => {
-        const selected = opt.value === query.category;
-        return (
-          <li key={opt.value} role="presentation">
-            <button
-              type="button"
-              role="option"
-              aria-selected={selected}
-              className={cn(searchOptionRow, selected ? searchOptionSelected : searchOptionIdle)}
-              onClick={() => {
-                setOpenCat(false);
-                push({ category: opt.value as DiscoveryCategoryId });
-              }}
-            >
-              <SearchCategoryOptionIcon id={opt.value} />
-              <span className="min-w-0 flex-1 truncate">{opt.label}</span>
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <DiscoverySearchCategoryOptionList
+      options={categoryOptions}
+      value={query.category}
+      onSelect={(v) => {
+        setOpenCat(false);
+        push({ category: v as DiscoveryCategoryId });
+      }}
+    />
   );
 
   const datePanel = (
@@ -263,25 +244,7 @@ export function DiscoveryPageHeader(props: DiscoveryPageHeaderProps) {
 
   const locationPanel = (
     <div className="flex flex-col">
-      <LocationPicker
-        value={locDraft}
-        onChange={setLocDraft}
-        onClearApplied={() => {
-          setLocDraft(null);
-          applyLocation(null);
-          onLocOpenChange(false);
-        }}
-        onClose={() => onLocOpenChange(false)}
-        locale={locale}
-        title={tHome("locationPicker.title")}
-        clearLabel={tHome("locationPicker.clear")}
-        closeLabel={tHome("locationPicker.close")}
-        placeholder={tHome("locationPicker.placeholder")}
-        useCurrentLocationLabel={tHome("locationPicker.useCurrentLocation")}
-        locatingLabel={tHome("locationPicker.locating")}
-        locationFallbackLabel={tHome("locationPicker.currentLocationResult")}
-        density={layout === "desktop" ? "compact" : "default"}
-      />
+      <LocationPicker value={locDraft} labels={locationPickerLabels} onChange={setLocDraft} />
       <div className={cn("border-t border-border", layout === "desktop" ? "p-3" : "p-4")}>
         <Button
           type="button"

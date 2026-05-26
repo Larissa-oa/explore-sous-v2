@@ -71,8 +71,14 @@
   /* Homepage hero band (distinct from page `--background` white) */
   --hero-background: #efedea;
 
-  /** Sticky site header — mega menu anchors below this; tune with navbar padding. */
+  /** Promo strip above navbar (`SiteTopBar`). */
+  --site-top-bar-height: 1.75rem;
+
+  /** Main navbar row only — tune with navbar padding. */
   --site-navbar-height: 3.75rem;
+
+  /** Top bar + navbar — mega menu and sticky offsets use this. */
+  --site-header-height: calc(var(--site-top-bar-height) + var(--site-navbar-height));
 
   /* Clay */
   --ds-clay-50: #f2f1ee;
@@ -91,8 +97,22 @@
   --ds-alpha-black-50: rgb(10 10 10 / 50%);
   --ds-alpha-black-55: rgb(10 10 10 / 55%);
 
+  /** Navbar discover search bar — border, dividers, elevation (see `[data-navbar-discover-bar]`). */
+  --navbar-discover-bar-radius: var(--ds-radius-16);
+  --navbar-discover-bar-border: rgb(10 10 10 / 9%);
+  --navbar-discover-bar-border-width: 0.33px;
+  --navbar-discover-bar-divider: rgb(10 10 10 / 12%);
+  --navbar-discover-bar-shadow:
+    0 1px 2px rgb(10 10 10 / 6%), 0 6px 16px -4px rgb(10 10 10 / 8%),
+    0 16px 40px -12px rgb(10 10 10 / 14%);
+
+  /** Desktop sticky navbar — soft band under header when discover bar is shown. */
+  --navbar-discover-header-under-shadow: 0 10px 32px -14px rgb(10 10 10 / 10%);
+
   /** Stacking — sticky navbar, then full-viewport filter/search scrims. */
   --z-site-navbar: 60;
+  /** Home / navbar discover field popovers (above sticky header, below modal scrim). */
+  --z-navbar-search-popover: 61;
   --z-modal-scrim: 70;
   --z-modal-panel: 71;
 
@@ -231,7 +251,7 @@
   --radius-ds-full: var(--ds-radius-full);
 }
 
-/* Search bar field hovers: outer surface radius (24 / 20) minus 2px — scoped to [data-search-field-surface] */
+/* Hero homepage search — field hovers track ds-24 / md:ds-20 outer radius */
 [data-search-field-surface] {
   --search-field-hover-radius: calc(var(--ds-radius-24) - 2px);
 }
@@ -239,6 +259,49 @@
 @media (min-width: 768px) {
   [data-search-field-surface] {
     --search-field-hover-radius: calc(var(--ds-radius-20) - 2px);
+  }
+}
+
+/*
+ * Navbar discover bar — 16px outer radius (not pill). Field hovers tighter + squarer than shell.
+ */
+[data-navbar-discover-bar] {
+  --search-field-hover-radius: calc(var(--navbar-discover-bar-radius) - 6px);
+  --search-control-inner-radius: calc(var(--navbar-discover-bar-radius) - 4px);
+  border: var(--navbar-discover-bar-border-width) solid var(--navbar-discover-bar-border);
+  border-radius: var(--navbar-discover-bar-radius) !important;
+  box-shadow: var(--navbar-discover-bar-shadow);
+}
+
+[data-navbar-discover-bar] .discover-search-field-cell > [data-slot="popover"] {
+  display: flex;
+  min-height: 0;
+  min-width: 0;
+  flex: 1;
+}
+
+[data-navbar-discover-bar] .discover-search-field-cell [data-slot="popover-trigger"] {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar-discover-header-elevated {
+    position: relative;
+    box-shadow: none;
+  }
+
+  .navbar-discover-header-elevated::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    box-shadow: var(--navbar-discover-header-under-shadow);
+    pointer-events: none;
   }
 }
 
@@ -347,6 +410,14 @@
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -0.01em;
+}
+
+@utility rounded-ds-20 {
+  border-radius: var(--ds-radius-20);
+}
+
+@utility rounded-ds-full {
+  border-radius: var(--ds-radius-full);
 }
 
 @utility rounded-search-inner {
@@ -525,47 +596,6 @@ body {
   .hero-floating-mosaic .hero-floating-tile-shell {
     animation: none !important;
     transform: none !important;
-  }
-}
-
-@keyframes explore-mega-open {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -12px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes explore-mega-close {
-  from {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0, -10px, 0);
-  }
-}
-
-.explore-mega-sheet[data-state="open"],
-.explore-mega-sheet[data-open] {
-  animation: explore-mega-open 380ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
-}
-
-.explore-mega-sheet[data-state="closed"],
-.explore-mega-sheet[data-closed] {
-  animation: explore-mega-close 260ms cubic-bezier(0.45, 0, 0.55, 1) both !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .explore-mega-sheet[data-state="open"],
-  .explore-mega-sheet[data-open],
-  .explore-mega-sheet[data-state="closed"],
-  .explore-mega-sheet[data-closed] {
-    animation: none !important;
   }
 }
 

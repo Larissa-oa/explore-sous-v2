@@ -41,27 +41,11 @@
   },
   "SiteNavbar": {
     "logoLinkAria": "SOUS startpagina",
-    "mainNavAria": "Hoofdnavigatie",
-    "mobileMenuAria": "Menu openen",
-    "mobileMenuCloseAria": "Menu sluiten",
-    "mobileMenuTitle": "Menu",
-    "explore": {
-      "trigger": "Ontdekken",
-      "megaMenuTitle": "Ontdekken",
-      "megaMenuDescription": "Kies hoe je SOUS wilt beleven.",
-      "categoriesSectionLabel": "Explore SOUS",
-      "howItWorks": "Hoe het werkt",
-      "seeAllCardSubtitle": "Ontdek bezorgen, afhalen, reserveringen en meer.",
-      "trendingNow": "Trending nu",
-      "seeAll": "Alles bekijken",
-      "delivery": "Bezorgen",
-      "reservations": "Reserveringen",
-      "pickup": "Afhalen"
-    },
-    "searchPlaceholder": "Zoeken",
     "search": {
       "placeholder": "Zoek restaurants op naam of keuken",
       "close": "Zoeken sluiten",
+      "clear": "Wissen",
+      "clearInput": "Zoektekst wissen",
       "popularTitle": "Populaire zoekopdrachten",
       "featured": "Uitgelicht Restaurants",
       "searchFor": "Zoeken naar “{query}”",
@@ -74,7 +58,6 @@
         "trending": "Nu trending"
       }
     },
-    "restaurants": "Restaurants",
     "poweredBy": "Word aangedreven door SOUS",
     "login": "Inloggen",
     "searchAria": "Zoeken",
@@ -114,6 +97,7 @@
     },
     "header": {
       "categoryAll": "Alles",
+      "categoryAllDescription": "Ontdek alles",
       "dateLabel": "Datum",
       "datePlaceholder": "Kies datum",
       "clearDate": "Alle datums",
@@ -153,6 +137,11 @@
       "trustAvatar3Alt": "Portret van een curator"
     },
     "search": {
+      "navbarPill": {
+        "what": "Wat",
+        "where": "Waar",
+        "when": "Wanneer"
+      },
       "categoryLabel": "Categorie",
       "categoryPlaceholder": "Kies categorie",
       "whenLabel": "Wanneer",
@@ -179,16 +168,21 @@
         "title": "Waar",
         "clear": "Wissen",
         "close": "Sluiten",
-        "placeholder": "Postcode of stad",
-        "useCurrentLocation": "Gebruik huidige locatie",
+        "placeholder": "Zoek wijken, steden…",
+        "useCurrentLocation": "Huidige locatie",
         "locating": "Locatie ophalen…",
-        "currentLocationResult": "Bij jou in de buurt"
+        "currentLocationResult": "Bij jou in de buurt",
+        "recent": "Recent"
       },
       "categories": {
         "all": "Alles",
+        "allDescription": "Ontdek alles",
         "delivery": "Bezorgen",
+        "deliveryDescription": "Bestel aan huis",
         "reservations": "Reserveringen",
-        "pickup": "Afhalen"
+        "reservationsDescription": "Reserveer een tafel",
+        "pickup": "Afhalen",
+        "pickupDescription": "Bestel om mee te nemen"
       }
     },
     "vendorSpotlight": {
@@ -222,10 +216,6 @@
     },
     "listingCard": {
       "priceFrom": "Vanaf"
-    },
-    "partners": {
-      "title": "Uitgelichte partners",
-      "description": "Geselecteerde restaurants en chefs bij jou in de buurt."
     },
     "delivery": {
       "title": "Jouw favorieten, bij jou thuisbezorgd",

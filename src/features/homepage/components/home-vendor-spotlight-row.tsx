@@ -1,9 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { Fragment } from "react";
 import { Heart } from "lucide-react";
-import { ForkKnifeIcon } from "@phosphor-icons/react";
 
 import { Link } from "@/i18n/navigation";
 import type { VendorSpotlightRow } from "@/types/home";
@@ -17,7 +13,9 @@ const FAVORITE_BUTTON = cn(
 
 const THUMB = "relative size-[4.5rem] shrink-0 overflow-hidden rounded-ds-8 bg-muted";
 
-const CUISINE_DOT = "size-1 shrink-0 rounded-full bg-foreground";
+const ROW_META = "text-xs text-muted-foreground";
+
+const CUISINE_DOT = "size-1 shrink-0 rounded-full bg-current";
 
 export function VendorSpotlightRowItem({
   row,
@@ -39,23 +37,25 @@ export function VendorSpotlightRowItem({
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="truncate text-base font-semibold leading-snug tracking-tight text-foreground">{row.name}</p>
-          <p className="mt-0.5 min-w-0 truncate text-xs text-muted-foreground">{row.location}</p>
+          <p className="truncate text-base font-semibold leading-snug tracking-tight text-foreground">
+            {row.name}
+          </p>
           {row.cuisineTags.length > 0 ? (
-            <div className="mt-1.5 flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs font-medium text-foreground">
-              <ForkKnifeIcon
-                className="size-3.5 shrink-0 text-ds-blue-600"
-                weight="fill"
-                aria-hidden
-              />
+            <div
+              className={cn(
+                ROW_META,
+                "mt-0.5 flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5",
+              )}
+            >
               {row.cuisineTags.map((tag, index) => (
-                <Fragment key={`${tag}-${index}`}>
+                <span key={tag} className="inline-flex min-w-0 items-center gap-x-1.5">
                   {index > 0 ? <span className={CUISINE_DOT} aria-hidden /> : null}
-                  <span className="min-w-0">{tag}</span>
-                </Fragment>
+                  {tag}
+                </span>
               ))}
             </div>
           ) : null}
+          <p className={cn(ROW_META, "mt-1 min-w-0 truncate")}>{row.location}</p>
         </div>
       </Link>
 

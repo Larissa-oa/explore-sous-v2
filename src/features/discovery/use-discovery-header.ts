@@ -88,13 +88,25 @@ export function useDiscoveryHeaderState({ query, filterMeta }: DiscoveryPageHead
 
   const categoryOptions = useMemo(
     () => [
-      { value: "all" as const, label: t("categoryAll") },
-      ...SEARCH_CATEGORY_IDS.map((key) => ({
-        value: key,
-        label: tHome(`categories.${key}`),
+      { value: "all" as const, label: t("categoryAll"), description: t("categoryAllDescription") },
+      ...SEARCH_CATEGORY_IDS.map((id) => ({
+        value: id,
+        label: tHome(`categories.${id}`),
+        description: tHome(`categories.${id}Description`),
       })),
     ],
     [t, tHome],
+  );
+
+  const locationPickerLabels = useMemo(
+    () => ({
+      placeholder: tHome("locationPicker.placeholder"),
+      useCurrentLocation: tHome("locationPicker.useCurrentLocation"),
+      locating: tHome("locationPicker.locating"),
+      locationFallback: tHome("locationPicker.currentLocationResult"),
+      recent: tHome("locationPicker.recent"),
+    }),
+    [tHome],
   );
 
   const categoryDisplay =
@@ -155,6 +167,7 @@ export function useDiscoveryHeaderState({ query, filterMeta }: DiscoveryPageHead
     draftTags, setDraftTags,
     draftPromos, setDraftPromos,
     categoryOptions,
+    locationPickerLabels,
     categoryDisplay,
     dateValue,
     dateDisplay,
@@ -174,4 +187,3 @@ export function useDiscoveryHeaderState({ query, filterMeta }: DiscoveryPageHead
   };
 }
 
-export type DiscoveryHeaderState = ReturnType<typeof useDiscoveryHeaderState>;

@@ -129,7 +129,7 @@ export function CalendarPicker({
         </button>
       </div>
 
-      <div className={cn("grid grid-cols-7 text-center", compact ? "mb-1 gap-0.5" : "mb-2 gap-1")}>
+      <div className={cn("grid grid-cols-7 text-center", compact ? "mb-1 gap-0" : "mb-1.5 gap-0")}>
         {CALENDAR_WEEKDAY_ORDER.map((k) => (
           <div
             key={k}
@@ -143,11 +143,7 @@ export function CalendarPicker({
         ))}
       </div>
 
-      <div
-        className={cn("grid grid-cols-7", compact ? "gap-0.5" : "gap-1")}
-        role="grid"
-        aria-label={monthTitle}
-      >
+      <div className="grid grid-cols-7 gap-0" role="grid" aria-label={monthTitle}>
         {weeks.map((week, wi) =>
           week.map((cell, di) => {
             const key = `${wi}-${di}`;
@@ -164,12 +160,11 @@ export function CalendarPicker({
                 disabled={disabled}
                 aria-selected={selected}
                 className={cn(
-                  "flex aspect-square min-h-0 min-w-0 items-center justify-center rounded-search-inner font-normal transition-colors",
-                  compact ? "max-h-8 max-w-8 text-xs" : "text-sm",
+                  "flex aspect-square w-full min-h-0 min-w-0 items-center justify-center rounded-search-inner font-normal transition-colors",
+                  compact ? "text-xs" : "text-sm",
                   disabled && "cursor-not-allowed text-muted-foreground line-through opacity-50",
                   !disabled && !selected && "text-foreground hover:bg-interactive-hover",
-                  selected &&
-                    "bg-ds-blue-600/18 font-semibold text-foreground ring-1 ring-inset ring-ds-blue-600/20",
+                  selected && "bg-foreground font-semibold text-background",
                 )}
                 onClick={() => handleDayClick(cell)}
               >

@@ -39,11 +39,6 @@ export function vendorToPartnerListing(v: CatalogVendor): PartnerListing {
   };
 }
 
-/** Featured partners — all vendors from catalog. */
-export function getHomePartners(): PartnerListing[] {
-  return homeCatalog.vendors.map(vendorToPartnerListing);
-}
-
 export type HomeVendorOfferKind = "delivery" | "pickup" | "reservation";
 
 /**
@@ -61,25 +56,27 @@ export function getHomeVendorsByOffer(offer: HomeVendorOfferKind): PartnerListin
   return homeCatalog.vendors.filter(predicate).map(vendorToPartnerListing);
 }
 
+const SPOTLIGHT_ROWS_PER_BLOCK = 4;
+
 /** Three homepage columns × four vendors — layout from {@link homeCatalog.homepage}. */
 export function getHomeVendorSpotlightBlocks(): VendorSpotlightBlock[] {
-  const vendors = homeCatalog.vendors;
+  const { vendors, homepage } = homeCatalog;
   if (vendors.length === 0) return [];
 
-  const { locations, blocks } = homeCatalog.homepage.vendorSpotlight;
+  const { locations, blocks } = homepage.vendorSpotlight;
 
   return blocks.map(({ blockKey, vendorOffset }) => ({
     blockKey,
-    rows: Array.from({ length: 4 }, (_, rowIndex) => {
-      const v = vendors[(vendorOffset + rowIndex) % vendors.length];
-      const loc = locations[(vendorOffset + rowIndex) % locations.length] ?? "";
+    rows: Array.from({ length: SPOTLIGHT_ROWS_PER_BLOCK }, (_, rowIndex) => {
+      const slot = vendorOffset + rowIndex;
+      const vendor = vendors[slot % vendors.length];
       return {
-        id: `${blockKey}-${v.id}-${rowIndex}`,
-        slug: v.slug,
-        name: v.name,
-        imageUrl: v.images[0] ?? "",
-        location: loc,
-        cuisineTags: v.cuisineTags,
+        id: `${blockKey}-${vendor.id}-${rowIndex}`,
+        slug: vendor.slug,
+        name: vendor.name,
+        imageUrl: vendor.images[0] ?? "",
+        location: locations[slot % locations.length] ?? "",
+        cuisineTags: vendor.cuisineTags,
       };
     }),
   }));

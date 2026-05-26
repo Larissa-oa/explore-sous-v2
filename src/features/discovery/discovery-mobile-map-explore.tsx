@@ -75,8 +75,8 @@ export function DiscoveryMobileMapExplore({
     <div
       className="fixed inset-x-0 z-50 flex flex-col bg-background lg:hidden"
       style={{
-        top: "var(--site-navbar-height)",
-        height: "calc(100dvh - var(--site-navbar-height))",
+        top: "calc(var(--site-top-bar-height) + 3.5rem)",
+        height: "calc(100dvh - var(--site-top-bar-height) - 3.5rem)",
       }}
       role="dialog"
       aria-modal

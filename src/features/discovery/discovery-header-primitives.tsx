@@ -2,10 +2,10 @@
 
 import type { ComponentProps, ReactNode } from "react";
 import {
-  BicycleIcon,
   CaretDownIcon,
   ForkKnifeIcon,
   MagnifyingGlassIcon,
+  PersonSimpleBikeIcon,
   StorefrontIcon,
 } from "@phosphor-icons/react";
 
@@ -23,21 +23,25 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  SEARCH_DROPDOWN_LIST,
+  SearchDropdownRow,
+} from "@/components/search/search-picker-wrap";
 import type { MdLayout } from "@/hooks/use-md-layout";
 import type { DiscoveryCategoryId } from "@/types/search";
 import { cn } from "@/lib/utils";
+
+export interface SearchCategoryOption {
+  value: DiscoveryCategoryId;
+  label: string;
+  description: string;
+}
 
 /** Filter modals (cuisine / more) — bottom sheet on mobile, dialog on desktop. */
 export const discoveryFilterModalSheetClass =
   "flex h-auto max-h-[min(88dvh,40rem)] flex-col !gap-0 rounded-t-ds-16 border-t-[0.5px] border-border bg-popover p-0 text-popover-foreground shadow-lg";
 export const discoveryFilterModalSheetHeader = "border-b-[0.5px] border-border p-4 text-left";
 export const discoveryFilterModalTitleClass = "text-base font-semibold text-foreground";
-
-export const discoverySearchOptionList = "max-h-[min(50vh,320px)] overflow-y-auto p-2";
-export const discoverySearchOptionRow =
-  "flex w-full items-center gap-3 rounded-search-inner px-4 py-2.5 text-left text-sm font-normal leading-snug text-foreground transition-colors";
-export const discoverySearchOptionSelected = "bg-ds-blue-600/15 font-medium text-foreground";
-export const discoverySearchOptionIdle = "hover:bg-interactive-hover";
 
 export const discoveryPillBaseClass =
   "inline-flex min-h-10 max-w-full shrink-0 items-center gap-2 rounded-ds-full bg-background px-4 py-2 text-left text-sm font-semibold text-foreground transition-colors hover:bg-interactive-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -84,22 +88,68 @@ export function DiscoveryHeaderFieldTrigger({
   );
 }
 
-export function DiscoveryHeaderCategoryIcon({ id }: { id: DiscoveryCategoryId }) {
-  const cls = "size-5 shrink-0 text-foreground";
-  switch (id) {
-    case "all":
-      return <MagnifyingGlassIcon className={cls} weight="regular" aria-hidden />;
-    case "delivery":
-      return <BicycleIcon className={cls} weight="regular" aria-hidden />;
-    case "reservations":
-      return <ForkKnifeIcon className={cls} weight="regular" aria-hidden />;
-    case "pickup":
-      return <StorefrontIcon className={cls} weight="regular" aria-hidden />;
-    default: {
-      const _e: never = id;
-      return _e;
+function CategoryOptionIcon({ id, selected }: { id: DiscoveryCategoryId; selected: boolean }) {
+  const iconClass = "size-5 shrink-0";
+  const glyph = (() => {
+    switch (id) {
+      case "all":
+        return <MagnifyingGlassIcon className={iconClass} weight="fill" aria-hidden />;
+      case "delivery":
+        return <PersonSimpleBikeIcon className={iconClass} weight="fill" aria-hidden />;
+      case "reservations":
+        return <ForkKnifeIcon className={iconClass} weight="fill" aria-hidden />;
+      case "pickup":
+        return <StorefrontIcon className={iconClass} weight="fill" aria-hidden />;
+      default: {
+        const _e: never = id;
+        return _e;
+      }
     }
-  }
+  })();
+
+  return (
+    <span
+      className={cn(
+        "flex size-8 shrink-0 items-center justify-center rounded-ds-8",
+        selected ? "bg-foreground text-background" : "bg-[var(--ds-alpha-black-8)] text-ds-clay-600",
+      )}
+      aria-hidden
+    >
+      {glyph}
+    </span>
+  );
+}
+
+export function DiscoverySearchCategoryOptionList({
+  options,
+  value,
+  onSelect,
+}: {
+  options: ReadonlyArray<SearchCategoryOption>;
+  value: string;
+  onSelect: (value: string) => void;
+}) {
+  return (
+    <ul className={cn(SEARCH_DROPDOWN_LIST, "flex flex-col gap-1")} role="listbox">
+      {options.map((opt) => {
+        const selected = opt.value === value;
+        return (
+          <li key={opt.value} role="presentation">
+            <SearchDropdownRow
+              role="option"
+              aria-selected={selected}
+              aria-label={`${opt.label}, ${opt.description}`}
+              selected={selected}
+              title={opt.label}
+              subtitle={opt.description}
+              onClick={() => onSelect(opt.value)}
+              icon={<CategoryOptionIcon id={opt.value} selected={selected} />}
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export function DiscoveryHeaderCheckboxRow({
