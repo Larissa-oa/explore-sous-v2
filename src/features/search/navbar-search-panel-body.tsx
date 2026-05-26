@@ -106,8 +106,6 @@ export function NavbarSearchPanelBody({
       {panel.featuredVendors.length > 0 ? (
         <ListingRail
           title={labels.featuredTitle}
-          width="contained"
-          listingSurface="standard"
           navLabels={labels.railNav}
           slideBasisClassName={navbarSearchRailSlideBasis}
           trackBleedClassName={railBleedClass}
@@ -117,7 +115,6 @@ export function NavbarSearchPanelBody({
           headerLeadClassName="min-h-9 flex-row items-center gap-0 py-0"
           navClassName="flex shrink-0 items-center gap-1 self-center p-0 pt-0"
           className="!py-0 [&_[data-slot=carousel]]:gap-4"
-          titleAlignDesktop="start"
         >
           {panel.featuredVendors.map((item: PartnerListing) => (
             <ListingRailSlide key={item.id}>

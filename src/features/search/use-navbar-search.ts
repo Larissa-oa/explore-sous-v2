@@ -24,6 +24,8 @@ export function useNavbarSearchLabels() {
   return {
     placeholder: t("placeholder"),
     close: t("close"),
+    clear: t("clear"),
+    clearAria: t("clearInput"),
     popularTitle: t("popularTitle"),
     featuredTitle: t("featured"),
     searchFor: (query: string) => t("searchFor", { query }),
@@ -68,4 +70,16 @@ export function useNavbarSearchQuery() {
   );
 
   return { query, setQuery, trimmed, clearQuery, navigateToSearch, handleKeyDown };
+}
+
+/** Close overlay when crossing the `md` breakpoint (mobile search only). */
+export function useCloseWhenMd(open: boolean, onClose: () => void) {
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onCrossMd = () => {
+      if (mq.matches && open) onClose();
+    };
+    mq.addEventListener("change", onCrossMd);
+    return () => mq.removeEventListener("change", onCrossMd);
+  }, [onClose, open]);
 }

@@ -7,6 +7,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
+const hideNativeSearchClearClass =
+  "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden";
+
+interface NavbarSearchFieldProps {
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  ariaLabel: string;
+  clearLabel: string;
+  clearAriaLabel: string;
+  onClear: () => void;
+  /** When set, an empty field shows an X that calls this (desktop closes the overlay). */
+  onCloseOverlay?: () => void;
+  closeAriaLabel?: string;
+  inputRef?: Ref<HTMLInputElement>;
+  size?: "sm" | "md";
+}
+
 export function NavbarSearchField({
   id,
   value,
@@ -14,23 +34,22 @@ export function NavbarSearchField({
   onKeyDown,
   placeholder,
   ariaLabel,
-  closeLabel,
-  onClose,
+  clearLabel,
+  clearAriaLabel,
+  onClear,
+  onCloseOverlay,
+  closeAriaLabel,
   inputRef,
   size = "sm",
-}: {
-  id: string;
-  value: string;
-  onChange: (value: string) => void;
-  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  ariaLabel: string;
-  closeLabel: string;
-  onClose: () => void;
-  inputRef?: Ref<HTMLInputElement>;
-  size?: "sm" | "md";
-}) {
-  const fieldClass = size === "md" ? "h-11 pl-9 pr-11 text-base" : "h-10 pl-9 pr-10 text-sm";
+}: NavbarSearchFieldProps) {
+  const hasText = value.length > 0;
+  const showClear = hasText;
+  const showClose = !hasText && onCloseOverlay != null;
+
+  const fieldClass = cn(
+    size === "md" ? "h-11 pl-9 text-base" : "h-10 pl-9 text-sm",
+    showClear ? "pr-20" : showClose ? (size === "md" ? "pr-11" : "pr-10") : "pr-4",
+  );
 
   return (
     <div className="relative min-w-0">
@@ -57,21 +76,37 @@ export function NavbarSearchField({
         autoCapitalize="none"
         spellCheck={false}
         className={cn(
+          hideNativeSearchClearClass,
           "w-full rounded-ds-12 border border-border bg-background shadow-none",
           fieldClass,
           "focus-visible:border-border focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0",
         )}
       />
-      <Button
-        type="button"
-        variant="ghost"
-        size="icon"
-        className="absolute right-1 top-1/2 size-8 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-        aria-label={closeLabel}
-        onClick={onClose}
-      >
-        <XIcon className="size-4" weight="bold" aria-hidden />
-      </Button>
+      {showClear ? (
+        <button
+          type="button"
+          className={cn(
+            "absolute right-3 top-1/2 -translate-y-1/2 font-medium text-ds-blue-600 transition-colors hover:text-ds-blue-900",
+            size === "md" ? "text-sm" : "text-xs",
+          )}
+          aria-label={clearAriaLabel}
+          onClick={onClear}
+        >
+          {clearLabel}
+        </button>
+      ) : null}
+      {showClose ? (
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="absolute right-1 top-1/2 size-8 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+          aria-label={closeAriaLabel}
+          onClick={onCloseOverlay}
+        >
+          <XIcon className="size-4" weight="bold" aria-hidden />
+        </Button>
+      ) : null}
     </div>
   );
 }

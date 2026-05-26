@@ -16,18 +16,18 @@ export async function HomeHeroTrust() {
         "text-center sm:text-left",
       )}
     >
-      <div className="flex shrink-0 -space-x-3">
+      <div className="flex shrink-0 -space-x-2.5">
         {HERO_TRUST_AVATAR_URLS.map((src, i) => (
           <span
             key={src}
-            className="relative size-11 overflow-hidden rounded-full border-2 border-ds-clay-50 bg-muted ring-1 ring-border/60 sm:size-12"
+            className="relative size-8 overflow-hidden rounded-full border-2 border-ds-clay-50 bg-muted ring-1 ring-border/60 sm:size-9"
           >
             <Image
               src={src}
               alt={t(AVATAR_ALT_KEYS[i] ?? "trustAvatar1Alt")}
               fill
               className="object-cover"
-              sizes="48px"
+              sizes="36px"
             />
           </span>
         ))}

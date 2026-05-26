@@ -11,9 +11,8 @@ export async function HomePageShell() {
   return (
     <div className={cn(pageShellContentClass, "flex flex-1 flex-col")}>
       <HomeCategoryCards />
-      <HomeVendorSpotlight />
-      <HomeListingRail kind="partners" />
       <HomeListingRail kind="delivery" />
+      <HomeVendorSpotlight />
       <HomeListingRail kind="pickup" />
       <HomeCta />
     </div>

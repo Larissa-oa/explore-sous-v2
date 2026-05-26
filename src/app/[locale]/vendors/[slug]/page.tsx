@@ -18,7 +18,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { slug } = await params;
   const vendor = getVendorPageDetailBySlug(slug);
   if (!vendor) {
     return { title: "SOUS" };

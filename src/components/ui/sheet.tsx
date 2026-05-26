@@ -61,7 +61,7 @@ function SheetContent({
   ModalScrimProps & {
     side?: "top" | "right" | "bottom" | "left"
     showCloseButton?: boolean
-    /** Merged into {@link SheetOverlay} (e.g. `top-[var(--site-navbar-height)]` on mega menu). */
+    /** Merged into {@link SheetOverlay} (e.g. `top-[var(--site-header-height)]`). */
     overlayClassName?: string
   }) {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import {
   Popover,
@@ -17,17 +17,20 @@ import {
 import type { MdLayout } from "@/hooks/use-md-layout";
 import { cn } from "@/lib/utils";
 
-/** Shared popover shell for home + discovery search pickers. */
+/** Shared popover shell for home + navbar discover search pickers (above sticky header). */
 export const SEARCH_PICKER_POPOVER_CLASS =
-  "rounded-ds-12 border-[0.5px] border-border bg-popover text-popover-foreground shadow-[0_1px_3px_var(--ds-alpha-black-8)] ring-0";
+  "z-[var(--z-navbar-search-popover)] rounded-ds-12 border-[0.5px] border-border bg-popover text-popover-foreground shadow-[0_1px_3px_var(--ds-alpha-black-8)] ring-0";
+
+export const SEARCH_DROPDOWN_LIST = "max-h-[min(50vh,320px)] overflow-y-auto p-2";
+
+const searchDropdownRow =
+  "flex w-full items-center gap-3 rounded-search-inner px-4 py-2.5 text-left text-sm font-normal leading-snug text-foreground transition-colors";
 
 const sheetHeaderClass = "border-b-[0.5px] border-border p-4 text-left";
 const sheetTitleClass = "text-base font-semibold text-foreground";
 
 const sheetOuterClass = {
-  /** Homepage hero search bar — taller sheet on mobile. */
   home: "h-auto max-h-[85vh] rounded-t-ds-16 border-t-[0.5px] border-border bg-popover p-0 text-popover-foreground shadow-lg",
-  /** Discovery sticky bar — compact sheet. */
   discovery:
     "flex h-auto max-h-[min(88dvh,40rem)] flex-col !gap-0 rounded-t-ds-16 border-t-[0.5px] border-border bg-popover p-0 text-popover-foreground shadow-lg",
 } as const;
@@ -48,14 +51,51 @@ export interface SearchPickerWrapProps {
   panel: ReactNode;
   sheetTitle: string;
   popoverWidthClass: string;
-  /** Merged into the mobile sheet outer (e.g. min-height on home). */
   sheetContentClassName?: string;
 }
 
-/**
- * Desktop: anchored popover. Mobile: bottom sheet.
- * Same behaviour for homepage search and discovery filters.
- */
+/** Row used in category + location search dropdowns. */
+export function SearchDropdownRow({
+  icon,
+  title,
+  subtitle,
+  onClick,
+  selected = false,
+  disabled,
+  className,
+  ...props
+}: {
+  icon: ReactNode;
+  title: string;
+  subtitle?: string;
+  onClick: () => void;
+  selected?: boolean;
+  disabled?: boolean;
+  className?: string;
+} & Omit<ComponentProps<"button">, "type" | "onClick" | "disabled" | "className">) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className={cn(
+        searchDropdownRow,
+        selected ? "bg-interactive-hover" : "hover:bg-interactive-hover",
+        className,
+      )}
+      {...props}
+    >
+      {icon}
+      <span className="min-w-0 flex-1 text-left">
+        <span className="block truncate font-semibold leading-snug">{title}</span>
+        {subtitle ? (
+          <span className="block truncate text-xs leading-snug text-ds-clay-600">{subtitle}</span>
+        ) : null}
+      </span>
+    </button>
+  );
+}
+
 export function SearchPickerWrap({
   variant,
   layout,

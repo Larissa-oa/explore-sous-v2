@@ -5,9 +5,6 @@ import { buildVendorPageDetail } from "@/lib/data/vendor-page";
 import { hasDiscoveryLocation } from "@/lib/discovery/discovery-query";
 import type { DiscoverySearchState } from "@/lib/discovery/discovery-query";
 import {
-  resolveDiscoverySearchGeo,
-} from "@/lib/discovery/mock-search-center";
-import {
   vendorMatchesDiscoveryCategory,
   vendorPassesExtraFilters,
 } from "@/lib/discovery/discovery-vendor-eligibility";

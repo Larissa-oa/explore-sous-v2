@@ -20,12 +20,16 @@ import { Link } from "@/i18n/navigation";
 import { pageContentGutterXClass, pageShellContentClass } from "@/lib/site-layout";
 import { cn } from "@/lib/utils";
 
-// Inner list scroll on `lg+`; smaller breakpoints use window scroll — keep both in mind when changing layout.
-const LIST_SCROLL =
-  "min-h-0 lg:h-full lg:max-h-[calc(100dvh-10rem)] lg:overflow-y-auto lg:pr-1";
-/** Fills the spanned grid rows on desktop (no `56rem` cap) and sticks under the navbar while scrolling. */
-const MAP_STICKY =
-  "lg:sticky lg:top-[var(--site-navbar-height)] lg:z-0 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:self-stretch";
+/** Navbar on discover has no in-bar search — row is py-2.5/h-9 (md: py-3.5/h-9), not `--site-navbar-height`. */
+const STICKY_UNDER_NAVBAR =
+  "top-[calc(var(--site-top-bar-height)+3.5rem)] md:top-[calc(var(--site-top-bar-height)+4rem)]";
+
+/** Sticky map column on `lg+` — page scrolls; map stays in view below the site header. */
+const MAP_STICKY = cn(
+  "lg:sticky lg:z-0 lg:flex lg:flex-col lg:self-start",
+  STICKY_UNDER_NAVBAR,
+  "lg:h-[calc(100dvh-var(--site-top-bar-height)-4rem)]",
+);
 
 /** One shell for filters + results so the sticky bar stays in a tall scroll parent. */
 const discoveryPageShellClass = cn(
@@ -130,57 +134,53 @@ export function DiscoveryPageView({
         ) : null}
 
         {query != null && filterMeta != null ? (
-          <div className="sticky top-[var(--site-navbar-height)] z-40 bg-background">
+          <div className={cn("sticky z-40 bg-background", STICKY_UNDER_NAVBAR)}>
             <DiscoveryPageHeader query={query} filterMeta={filterMeta} />
           </div>
         ) : null}
 
         <div
           className={cn(
-            "mt-3 flex min-h-0 flex-col gap-6",
-            "lg:mt-0 lg:grid lg:min-h-[calc(100dvh-10rem)] lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:grid-rows-[auto_minmax(0,1fr)] lg:gap-x-6 lg:gap-y-0",
+            "mt-3 flex flex-col gap-6",
+            "lg:mt-0 lg:grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:items-start lg:gap-x-6",
           )}
         >
-          <p
-            className={cn(
-              "pt-3 lg:col-start-1 lg:row-start-1 lg:self-start lg:pr-6 lg:pt-4",
-              rows.length === 0
-                ? "type-body-md text-muted-foreground"
-                : "text-sm text-muted-foreground",
-            )}
-          >
-            {showResultsHeading
-              ? resultsCountLabel
-              : rows.length === 0
-                ? t("noResultsFilters")
-                : t("summary", { count: rows.length })}
-          </p>
+          <div className="min-w-0 lg:col-start-1 lg:pr-6">
+            <p
+              className={cn(
+                "pt-3 lg:pt-4",
+                rows.length === 0
+                  ? "type-body-md text-muted-foreground"
+                  : "text-sm text-muted-foreground",
+              )}
+            >
+              {showResultsHeading
+                ? resultsCountLabel
+                : rows.length === 0
+                  ? t("noResultsFilters")
+                  : t("summary", { count: rows.length })}
+            </p>
 
-          <div
-            className={cn("flex min-h-0 flex-col", LIST_SCROLL, "lg:col-start-1 lg:row-start-2 lg:mt-6 lg:pr-6")}
-          >
             {rows.length > 0 ? (
-              <>
-                <div className="flex min-h-0 flex-col divide-y divide-border">
-                  {visibleRows.map((row) => (
-                    <DiscoveryVendorRowView key={row.slug} row={row} orderCta={t("orderCta")} />
-                  ))}
-                </div>
+              <div className="mt-6 flex flex-col divide-y divide-border">
+                {visibleRows.map((row) => (
+                  <DiscoveryVendorRowView key={row.slug} row={row} orderCta={t("orderCta")} />
+                ))}
                 <div ref={sentinelRef} className="h-4 shrink-0" aria-hidden />
-              </>
+              </div>
             ) : null}
           </div>
 
           <div
             className={cn(
-              "hidden min-h-0 min-w-0 discovery-map-bleed-right",
+              "hidden min-w-0 discovery-map-bleed-right lg:flex",
               MAP_STICKY,
-              "lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:flex",
+              "lg:col-start-2",
             )}
           >
             {query != null && searchGeo != null ? (
               <DiscoveryMap
-                className="h-[min(40vh,22rem)] w-full min-h-[12rem] rounded-none lg:min-h-0 lg:flex-1"
+                className="h-[min(40vh,22rem)] w-full min-h-[12rem] rounded-none lg:h-full lg:min-h-0"
                 center={{ lat: searchGeo.centerLat, lng: searchGeo.centerLng }}
                 radiusKm={searchGeo.radiusKm}
                 showSearchRadius={(query.location?.trim() ?? "").length > 0}

@@ -41,27 +41,11 @@
   },
   "SiteNavbar": {
     "logoLinkAria": "SOUS home",
-    "mainNavAria": "Main",
-    "mobileMenuAria": "Open menu",
-    "mobileMenuCloseAria": "Close menu",
-    "mobileMenuTitle": "Menu",
-    "explore": {
-      "trigger": "Explore",
-      "megaMenuTitle": "Explore",
-      "megaMenuDescription": "Choose a way to experience SOUS.",
-      "categoriesSectionLabel": "Explore SOUS",
-      "howItWorks": "How it works",
-      "seeAllCardSubtitle": "Browse delivery, pickup, reservations, and more.",
-      "trendingNow": "Trending now",
-      "seeAll": "See all",
-      "delivery": "Delivery",
-      "reservations": "Reservations",
-      "pickup": "Pickup"
-    },
-    "searchPlaceholder": "Search",
     "search": {
       "placeholder": "Search restaurants by name or cuisine",
       "close": "Close search",
+      "clear": "Clear",
+      "clearInput": "Clear search text",
       "popularTitle": "Popular searches",
       "featured": "Featured Restaurants",
       "searchFor": "Search for “{query}”",
@@ -74,7 +58,6 @@
         "trending": "Trending now"
       }
     },
-    "restaurants": "Restaurants",
     "poweredBy": "Get Powered by SOUS",
     "login": "Login",
     "searchAria": "Search",
@@ -114,6 +97,7 @@
     },
     "header": {
       "categoryAll": "All",
+      "categoryAllDescription": "Browse every option",
       "dateLabel": "Date",
       "datePlaceholder": "Select date",
       "clearDate": "Any date",
@@ -153,6 +137,11 @@
       "trustAvatar3Alt": "Portrait of a curator"
     },
     "search": {
+      "navbarPill": {
+        "what": "What",
+        "where": "Where",
+        "when": "When"
+      },
       "categoryLabel": "Category",
       "categoryPlaceholder": "Choose category",
       "whenLabel": "When",
@@ -179,16 +168,21 @@
         "title": "Where",
         "clear": "Clear",
         "close": "Close",
-        "placeholder": "Postal code or city",
-        "useCurrentLocation": "Use current location",
+        "placeholder": "Search neighborhoods, cities…",
+        "useCurrentLocation": "Current location",
         "locating": "Finding your location…",
-        "currentLocationResult": "Near you"
+        "currentLocationResult": "Near you",
+        "recent": "Recent"
       },
       "categories": {
         "all": "All",
+        "allDescription": "Browse every option",
         "delivery": "Delivery",
+        "deliveryDescription": "Order to your door",
         "reservations": "Reservations",
-        "pickup": "Pickup"
+        "reservationsDescription": "Book a table",
+        "pickup": "Pickup",
+        "pickupDescription": "Order to-go"
       }
     },
     "vendorSpotlight": {
@@ -222,10 +216,6 @@
     },
     "listingCard": {
       "priceFrom": "From"
-    },
-    "partners": {
-      "title": "Featured partners",
-      "description": "Hand-picked restaurants and chefs near you."
     },
     "delivery": {
       "title": "Your favorites, delivered to you",
